@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100%" height="100%" viewBox="0 0 433 432" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.1 (12002) - http://www.bohemiancoding.com/sketch -->
+    <title>thumbs down</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="50%" cy="55.5058259%" fx="50%" fy="55.5058259%" r="97.2856182%" id="radialGradient-1">
+            <stop stop-color="#FBDA61" offset="0%"></stop>
+            <stop stop-color="#F76B1C" offset="100%"></stop>
+        </radialGradient>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="5" in="SourceAlpha" operator="dilate" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="20" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="art-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Q&amp;A-Fail" sketch:type="MSLayerGroup" transform="translate(-102.000000, -267.000000)" filter="url(#filter-2)" fill="url(#radialGradient-1)">
+            <g id="thumbs-down" transform="translate(145.000000, 307.000000)" sketch:type="MSShapeGroup">
+                <path d="M0.758333333,44.3181507 C62.3966895,16.3692922 135.573059,0.758333333 207.669863,0.758333333 C231.045548,0.758333333 254.060845,1.84988584 276.498402,5.55045662 C285.27637,7.00399543 296.67774,10.2730594 301.611301,14.0447489 C308.512215,19.3482877 312.942352,27.6931507 312.942352,37.0584475 C312.942352,45.6949772 309.17226,53.5356164 303.144749,58.8391553 L305.681849,58.8391553 C321.726712,58.8391553 334.721461,71.8347032 334.721461,87.8795662 C334.721461,103.924429 321.726712,116.919977 305.681849,116.919977 L320.203653,116.919977 C336.247717,116.919977 349.242466,129.914726 349.242466,145.959589 C349.242466,162.004452 336.247717,175 320.203653,175 C336.247717,175 349.242466,187.994749 349.242466,204.039612 C349.242466,220.083676 336.247717,233.081621 320.203653,233.081621 L189.961301,233.081621 C179.933562,233.081621 171.810046,241.213128 171.810046,251.22968 L180.947603,311.565525 C181.821804,314.319178 182.261301,317.226256 182.261301,320.203653 C182.261301,336.247717 169.264954,349.242466 153.22089,349.242466 C139.793037,349.242466 128.461986,340.098516 125.193721,327.754224 L123.959932,323.619749 C105.305251,264.227626 63.0503425,209.989612 0.758333333,175 L0.758333333,44.3181507 L0.758333333,44.3181507 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

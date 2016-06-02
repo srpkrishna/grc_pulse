@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100%" height="100%" viewBox="0 0 45 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.1 (12002) - http://www.bohemiancoding.com/sketch -->
+    <title>radio off</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="art-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Q&amp;A" sketch:type="MSLayerGroup" transform="translate(-43.000000, -373.000000)" fill="#5A5A5A">
+            <g id="radio-off" transform="translate(43.000000, 373.000000)" sketch:type="MSShapeGroup">
+                <g id="Icon_20_">
+                    <path d="M22.5,0 C10.1251082,0 0,10.1251082 0,22.5 C0,34.8748918 10.1251082,45 22.5,45 C34.8748918,45 45,34.8748918 45,22.5 C45,10.1251082 34.8748918,0 22.5,0 L22.5,0 Z M22.5,40.4998918 C12.6002163,40.4998918 4.50010817,32.3996755 4.50010817,22.5 C4.50010817,12.6003245 12.6002163,4.5 22.5,4.5 C32.3997837,4.5 40.5,12.6002163 40.5,22.5 C40.5,32.3997837 32.3997837,40.4998918 22.5,40.4998918 L22.5,40.4998918 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

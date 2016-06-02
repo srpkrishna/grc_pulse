@@ -1,0 +1,37 @@
+<appName "GRC Pulse">
+<companyName "MetricStream">
+<all "All">
+<read_document_policy "READ DOCUMENT POLICY">
+<watch_training_video "WATCH TRAINING VIDEO">
+<view_document "VIEW DOCUMENT">
+<attestation "I UNDERSTAND THE POLICY">
+<attestation_confirm_msg "I attest my understanding of this policy and promise to abide by it.">
+<set_as_completed_mp4 "Watched and Completed Training">
+<set_as_completed_pdf "Read and Understood Policy">
+<loading "Loading">
+<task_details "Task Details">
+<grc_packs_details "GRC Packs Details">
+<grc_packs "GRC Packs">
+<grc_policy_details "Policy Details">
+<swip_to_attest "I attest my understanding of this policy">
+<task_list "Task List">
+<task_pending " task pending!">
+<tasks_pending " tasks pending!">
+<error_contentType_notsupported "This content type can't be viewed in mobile.">
+<error_pdfreader_notfound "Pdf reader not found. Please install pdf reader and open the document.">
+<error_download "Internal error occurred downloading the document.">
+<reportanincident "Report an Incident">
+<incidenttitle "Incidents">
+<no_task "No task is assigned to you.">
+<next "Next">
+<exceptions "Exceptions">
+<no_exceptions "No exceptions available">
+<request "Request">
+<pending "Pending">
+<submit "Submit">
+<exception_reason_place_holder "Please state your reasons for exception">
+<confirm_attestation "Confirm attestation">
+<yes "Yes">
+<no "No">
+<survey_pass_bt_text "Proceed to attestation">
+<survey_fail_bt_text "Let me try it again">

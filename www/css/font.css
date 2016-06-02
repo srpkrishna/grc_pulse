@@ -1,0 +1,61 @@
+/* Webfont: Lato-Bold */
+@font-face {
+    font-family: 'LatoWebBold';
+    src: url('../fonts/Lato-Bold.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* Webfont: Lato-Light */
+@font-face {
+    font-family: 'LatoWebLight';
+    src: url('../fonts/Lato-Light.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+
+/* Webfont: Lato-Regular */
+@font-face {
+    font-family: 'LatoWeb';
+    src: url('../fonts/Lato-Regular.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+/* Webfont: Lato-thin */
+@font-face {
+    font-family: 'LatoWebThin';
+    src: url('../fonts/Lato-Thin.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+/* Webfont: Lato-black */
+@font-face {
+    font-family: 'LatoWebBlack';
+    src: url('../fonts/Lato-Black.woff') format('woff');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face { 
+    font-family: "Ionicons";
+    src: url('../fonts/ionicons.woff?v=2.0.0') format("woff");
+    font-weight: normal;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: "JennaSue";
+    src: url('../fonts/JennaSue.ttf') format("ttf");
+    font-weight: normal;
+    font-style: normal;
+    text-rendering: optimizeLegibility;
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100%" height="100%" viewBox="0 0 48 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.1 (12002) - http://www.bohemiancoding.com/sketch -->
+    <title>Logout</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="art-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Profile" sketch:type="MSLayerGroup" transform="translate(-576.000000, -56.000000)" filter="url(#filter-1)" fill="#D8D8D8">
+            <path d="M606.666667,65.5380381 C614.434616,68.2836141 620,75.6918745 620,84.4 C620,95.445695 611.045695,104.4 600,104.4 C588.954305,104.4 580,95.445695 580,84.4 C580,75.6421311 585.629148,68.1990202 593.466667,65.4914445 L593.466667,72.7743225 C589.40791,75.0601427 586.666667,79.4099455 586.666667,84.4 C586.666667,91.7637967 592.636203,97.7333333 600,97.7333333 C607.363797,97.7333333 613.333333,91.7637967 613.333333,84.4 C613.333333,79.4647843 610.652009,75.1558254 606.666667,72.8504293 L606.666667,65.5380381 L606.666667,65.5380381 Z M596.533333,61.5410309 C596.533333,59.5853735 598.119231,58 600.066667,58 C602.018073,58 603.6,59.5738354 603.6,61.5410309 L603.6,79.9256358 C603.6,81.8812931 602.014102,83.4666667 600.066667,83.4666667 C598.115261,83.4666667 596.533333,81.8928313 596.533333,79.9256358 L596.533333,61.5410309 Z" id="Logout" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

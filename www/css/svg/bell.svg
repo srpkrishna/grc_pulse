@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100%" height="100%" viewBox="0 0 41 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.1 (12002) - http://www.bohemiancoding.com/sketch -->
+    <title>ios-bell copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="art-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Task-Landing" sketch:type="MSLayerGroup" transform="translate(-581.000000, -211.000000)" fill="#000000">
+            <g id="exception-1" transform="translate(10.000000, 98.000000)" sketch:type="MSShapeGroup">
+                <g id="ios-bell-copy" transform="translate(574.000000, 115.000000)">
+                    <g id="Group">
+                        <path d="M28.9570312,17.6285829 C28.9570312,7.00134578 24.171875,3.38634298 19.6966146,2.58058935 C19.6966146,2.52614653 19.7057292,2.47170372 19.7057292,2.40637234 C19.7057292,1.06707914 18.7122396,0 17.5,0 C16.2877604,0 15.3307292,1.06707914 15.3307292,2.40637234 C15.3307292,2.47170372 15.3307292,2.52614653 15.3398438,2.58058935 C10.8554687,3.39723154 6.04296875,7.0231229 6.04296875,17.65036 C6.04296875,30.0415443 3.46354167,31.369949 0,34.854289 L35,34.854289 C31.5546875,31.3590604 28.9570312,30.0197672 28.9570312,17.6285829 L28.9570312,17.6285829 Z" id="Shape"></path>
+                        <path d="M17.5182292,41.8120805 C19.9609375,41.8120805 21.9661458,39.6452566 22.2304688,37.1299986 L12.8059896,37.1299986 C13.0611979,39.6452566 15.0755208,41.8120805 17.5182292,41.8120805 L17.5182292,41.8120805 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

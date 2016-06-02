@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100%" height="100%" viewBox="0 0 63 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.1 (12002) - http://www.bohemiancoding.com/sketch -->
+    <title>task unselected</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="art-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Send-Exception" sketch:type="MSLayerGroup" transform="translate(-290.000000, -1045.000000)" fill="#000000">
+            <g id="active-exceptions" transform="translate(0.000000, 1016.000000)" sketch:type="MSShapeGroup">
+                <g id="task-unselected" transform="translate(294.000000, 31.000000)">
+                    <g id="Icon_24_">
+                        <path d="M14.971888,21.6947786 L10.6944922,25.9721745 L24.4444922,39.7221745 L55,9.16666667 L50.7226042,4.88927083 L24.4444922,31.0135547 L14.971888,21.6947786 L14.971888,21.6947786 Z M48.8888411,48.8888411 L6.11115885,48.8888411 L6.11115885,6.11115885 L36.6666667,6.11115885 L36.6666667,0 L6.11115885,0 C2.74971354,0 0,2.74971354 0,6.11115885 L0,48.8888411 C0,52.2502865 2.74971354,55 6.11115885,55 L48.8888411,55 C52.2502865,55 55,52.2502865 55,48.8888411 L55,24.4444922 L48.8888411,24.4444922 L48.8888411,48.8888411 L48.8888411,48.8888411 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

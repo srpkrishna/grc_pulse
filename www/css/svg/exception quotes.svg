@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100%" height="100%" viewBox="0 0 41 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.1 (12002) - http://www.bohemiancoding.com/sketch -->
+    <title>quotes</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="art-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Approval-Detail" sketch:type="MSLayerGroup" transform="translate(-43.000000, -342.000000)" filter="url(#filter-1)" fill="#5A5A5A">
+            <g id="quotes" transform="translate(63.500000, 360.500000) scale(-1, -1) translate(-63.500000, -360.500000) translate(47.000000, 348.000000)" sketch:type="MSShapeGroup">
+                <path d="M18.006,6.538 C18.006,4.565 18.668,2.984 19.994,1.795 C21.32,0.605 22.971,0.01 24.941,0.01 C27.458,0.01 29.429,0.809 30.857,2.407 C32.285,4.004 33,6.13 33,8.782 C33,11.501 32.576,13.814 31.725,15.718 C30.875,17.621 29.856,19.201 28.664,20.461 C27.476,21.719 26.234,22.705 24.941,23.419 C23.65,24.133 22.528,24.658 21.576,25 L18.311,19.492 C19.671,18.947 20.828,18.08 21.779,16.89 C22.732,15.7 23.275,14.425 23.412,13.066 C22.053,13.066 20.81,12.469 19.688,11.28 C18.566,10.09 18.006,8.509 18.006,6.538 L18.006,6.538 Z M0.359,6.538 C0.359,4.565 1.022,2.984 2.348,1.795 C3.674,0.604 5.324,0.01 7.295,0.01 C9.813,0.01 11.783,0.809 13.211,2.407 C14.64,4.004 15.354,6.13 15.354,8.782 C15.354,11.501 14.93,13.814 14.079,15.718 C13.229,17.621 12.21,19.201 11.019,20.461 C9.831,21.719 8.588,22.705 7.295,23.419 C6.004,24.133 4.883,24.658 3.93,25 L0.666,19.492 C2.026,18.947 3.182,18.08 4.133,16.89 C5.086,15.7 5.63,14.425 5.766,13.066 C4.407,13.066 3.164,12.469 2.043,11.28 C0.92,10.09 0.359,8.509 0.359,6.538 L0.359,6.538 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

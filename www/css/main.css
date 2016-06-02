@@ -1,0 +1,1562 @@
+html {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+body {
+    font-size: 1em;
+    font-family: LatoWeb;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    height: 0.7%;
+    width: 100%;
+}
+
+.loading.hide {
+    height: 0;
+    opacity: 0;
+    display: none;
+}
+
+.loadingBar {
+    position: relative;
+    background: white;
+    height: 100%;
+    left: 0%;
+    opacity: 0.4;
+    animation: move 2s infinite;
+    -webkit-animation: move 2s infinite;
+}
+
+.noTask {
+    margin: 50% auto !important;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+}
+
+@-webkit-keyframes move {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes move {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.mainContainer {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    background-image: linear-gradient(180deg, #4A00AA 0%, #00FFF4 93%);
+}
+
+.SplashContainer {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    color: #ffffff;
+
+}
+
+.grc-icon {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    margin: 0 25% !important;
+    background-image: url('img/logo.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+.splashTextContainer {
+    position: relative;
+    top: 50%;
+    text-align: center;
+    margin: 0 auto !important;
+}
+
+.line1 {
+    font-size: 1.2em;
+    margin: 0 0 1em 0;
+}
+
+.line1 span:first-child {
+    font-family: LatoWebBlack;
+}
+
+.line1 span:last-child {
+    font-family: LatoWeb;
+}
+
+.line2 span {
+    font-family: LatoWebThin;
+    font-size: 2.8em;
+}
+
+.fullScreen {
+    width: 85%;
+    height: 90%;
+    margin: 5%;
+    margin-top: 15%;
+    border: 0px;
+}
+
+.headerContainer {
+    height: 2em;
+    padding: 0.25em;
+}
+
+.headerContainer > div.appName {
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 0.5em 0 0.5em 0;
+}
+
+.pageTitle {
+    position: fixed;
+    top: 0;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: LatoWebThin;
+    background-color: transparent;
+    z-index: -1;
+    left: 3em;
+    right: 3em;
+    padding: 0.6em;
+    font-size: 1.25em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pageContainer {
+    position: absolute;
+    bottom: 4em;
+    top: 3em;
+    right: 0.25em;
+    overflow-y: scroll;
+    left: 0.25em;
+}
+
+.zeroBottom {
+    bottom: 0 !important;
+}
+
+.taskContainer {
+    position: absolute;
+    bottom: 4em;
+    top: 3em;
+    right: 5%;
+    overflow-y: scroll;
+    left: 5%;
+    cursor: pointer;
+    width: 90%;
+}
+
+.taskContainer > .task {
+    padding: 1em;
+    background: rgba(255, 255, 255, 1);
+    position: relative;
+    margin: 0 0 20px 0;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+}
+
+div.taskContainer > div.task > .titleContainer > .title {
+    font-weight: bold;
+    left: 0;
+    width: 90%;
+    max-width: 94% !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+}
+
+div.taskContainer > div.task > .titleContainer > .endDate {
+    font-family: LatoWebBold;
+    font-size: 0.9em;
+    float: right;
+    margin: -1.5em 0 0;
+    line-height: 1.1em;
+    padding: 2px 5px 1px;
+    border-radius: 3px;
+}
+
+.endDateAlert {
+    background-color: #C70E0E;
+    color: #ffffff;
+    font-family: LatoWebBold;
+}
+
+div.taskContainer > div.task > .dept {
+    margin: 0 0 0.25em;
+    font-family: LatoWebThin;
+    font-size: 0.9em;
+}
+
+div.taskContainer > div.task > .summary {
+    width: 100%;
+    margin: .25em 0;
+    height: 3em;
+    display: block;
+    display: -webkit-box;
+    line-height: 1em;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: LatoWebLight;
+}
+
+.packContainerInTaskList {
+    height: 1.35em;
+}
+
+.packNameInTaskList {
+    border: 1px solid #868686;
+    border-radius: 8px;
+    font-family: LatoWeb, arial, sans-serif;
+    font-size: 0.9em;
+    color: #868686;
+    padding: 0.15em 0.5em 0em;
+    float: left;
+}
+
+.taskResources {
+    height: 1em;
+    margin: 0 0 1em;
+}
+
+.taskResources img {
+    margin: .25em;
+}
+
+.taskResources .resourceTitle {
+    display: inline;
+    max-width: 85% !important;
+    height: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: LatoWebLight;
+    position: absolute;
+    line-height: 1em;
+    margin-top: 2px;
+}
+
+.resourceList {
+    margin: 0.5em 0;
+}
+
+.tab_bar_text {
+    font-family: "LatoWeb";
+    color: rgb(104, 104, 113);
+    text-align: center;
+    margin: 0.5em 0 0 0;
+}
+
+.bottom_tab_active, .bottom_tab:active {
+    color: rgb(0, 49, 100);
+    font-weight: bold;
+}
+
+.backBtContainer {
+    height: 1.9em;
+    color: #ffffff;
+    z-index: 100;
+    background: transparent;
+    cursor: pointer;
+    float: left;
+    position: fixed;
+    padding: 0.15em 1em 0;
+    top: 0;
+    font-size: 1.5em;
+}
+
+.backIcon:before {
+    content: "\f124";
+}
+
+.taskDetailsContainer, .container {
+    position: absolute;
+    z-index: 1;
+    top: 3em;
+    left: 0;
+    bottom: 4em;
+    margin: 0 0.5em 0.5em;
+    padding: 1em 0.5em;
+    width: 91%;
+    color: #000;
+    background-color: #ffffff;
+    right: 0;
+}
+
+.taskDetailsContainer > div.titleContainer {
+    margin: 0.5em 0 0 0;
+}
+
+.taskDetailsContainer > div.titleContainer > div.endDate {
+    right: 0.5em;
+    top: 3em;
+    position: absolute;
+    font-family: LatoWebThin;
+    font-size: 0.9em;
+    padding: 1px 5px;
+    border-radius: 3px;
+    line-height: 1.1em;
+}
+
+.taskDetailsContainer > div.titleContainer > div.title {
+    font-weight: bold;
+    left: 0;
+    width: 94%;
+    max-width: 94% !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.deptTaskDetail {
+    font-family: LatoWebThin;
+    font-size: 0.9em;
+}
+
+.summaryTaskDetails {
+    width: 100%;
+    margin: .25em 0 0;
+    line-height: 1em;
+    font-family: LatoWebLight;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+}
+
+.resourceContainer {
+    margin: 0.5em auto !important;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    position: absolute;
+    bottom: 4em;
+    top: 9.5em;
+    right: 0.5em;
+    left: 0.5em;
+    overflow-y: scroll;
+
+}
+
+.resourceName {
+    margin: 0.15em 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    display: inline;
+    position: absolute;
+    left: 3em;
+    right: 0.5em;
+}
+
+.resourceConnectorContainer {
+    margin: -0.2em 0 -0.15em 0;
+}
+
+.resourceStepConnentor {
+    height: 0.5em;
+    width: 0.5em;
+    margin: 0 0 0.1em 0.21em;
+    display: block;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.resourceInactiveStepConnentor {
+    background-image: url('svg/inactive step connector.svg');
+}
+
+.resourceActiveStepConnentor {
+    background-image: url('svg/active step connector.svg');
+}
+
+.resourceStep {
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    height: 1em;
+    width: 1em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0 auto !important;
+    z-index: 3;
+    float: left;
+}
+
+.resourceActiveStep {
+    background-image: url('svg/active step.svg');
+}
+
+.resourceInActiveStep {
+    background-image: url('svg/inactive step.svg');
+}
+
+/* loading dots */
+
+.resourceBtActive:after {
+    content: ' .';
+    animation: dots 1s steps(5, end) infinite;
+}
+
+.profileInfoContainer {
+    background: #ffffff;
+    border-radius: 10px;
+    margin: 5% 2.5% 0;
+    padding: 5% 2.5%;
+    width: 90%;
+}
+
+.profileContainer {
+    width: 100%;
+    height: 7em;
+}
+
+.userProfileImgContainer {
+    float: left;
+    z-index: 10;
+}
+
+.userProfileImgContainer > img {
+    border-radius: 50%;
+    width: 100px;
+    border: solid 1px grey;
+    height: 100px;
+}
+
+.profileUserName {
+    font-size: 1.4em;
+    color: grey;
+    margin: 0 0 0 120px;
+    font-family: LatoWebBold;
+    z-index: 9;
+}
+
+.profileTaskCount {
+    text-align: center;
+}
+
+.talkToUs {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 1.2em;
+    font-family: LatoWebBold;
+    position: absolute;
+    bottom: 3em;
+    width: 100%;
+}
+
+.legalAndCopyRight {
+    font-size: 0.8em;
+    color: gray;
+    position: absolute;
+    bottom: 1em;
+    text-align: center;
+    width: 100%;
+}
+
+.logout {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    height: 2em;
+    width: 2em;
+    background-size: contain;
+    background: url('svg/Logout.svg') no-repeat center;
+}
+
+.attestationContainer {
+    position: absolute;
+    bottom: 1em;
+    margin: 0 auto !important;
+    text-align: center;
+    left: 0;
+    right: 0;
+}
+
+.attestationBt {
+    color: grey;
+    padding: 1em;
+    margin: 0.25em auto !important;
+    width: 80%;
+    border: 1px solid grey;
+    opacity: 0.6;
+    border-radius: 8px;
+}
+
+.attestationActive {
+    background-image: linear-gradient(180deg, #B4EC51 0%, #429321 100%);
+    border: 1px solid #08B400;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.50);
+    color: #ffffff;
+    opacity: 1;
+}
+
+.viewerTitle {
+    text-align: center;
+    color: #ffffff;
+    font-family: LatoWebBold;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0 0 1em 0;
+}
+
+.videoScreen {
+    width: 100% !important;
+    height: 100% !important;
+    margin-top: 1em;
+}
+
+.pdfScreen {
+    padding: 5%;
+}
+
+.icon {
+    font-size: 1em;
+    display: inline-block;
+    font-family: "Ionicons";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1em;
+    margin: 0.3em 0 0 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.svgIcon {
+    display: inline-block;
+    line-height: 1em;
+    height: 1em;
+    width: 1em;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: 0 0.5em 0 0;
+}
+
+.iconPadding {
+    padding: 0 0.5em;
+}
+
+.adobe {
+    background-image: url('svg/pdfs.svg');
+}
+
+.youtube {
+    background-image: url('svg/theaters.svg');
+}
+
+.document {
+    background-image: url('svg/docs.svg');
+}
+
+.survey {
+    background-image: url("svg/survey icon.svg");
+}
+
+.leftArrow:before {
+    content: "\f3d5";
+}
+
+.rightArrow:before {
+    content: "\f3d6";
+}
+
+.bottom_tab_bar {
+    position: absolute;
+    z-index: 100;
+    bottom: 0;
+    background-image: -webkit-linear-gradient(0deg, rgb(187, 187, 187) 0%, rgb(255, 255, 255) 86%, rgb(255, 255, 255) 100%);
+    background-image: linear-gradient(0deg, rgb(187, 187, 187) 0%, rgb(255, 255, 255) 86%, rgb(255, 255, 255) 100%);
+    box-shadow: 0 -5px 5px 0 rgba(0, 0, 0, 0.122);
+    width: 100%;
+    height: 4em;
+}
+
+.bottom_tab {
+    float: left;
+    margin: 1em 0 1em 0;
+    width: 20%;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.user-action-icon {
+    height: 2em;
+    width: 2em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0 auto !important;
+    z-index: 3;
+}
+
+.exceptions {
+    background-image: url("svg/exception unselected.svg");
+}
+
+.exceptions-active {
+    background-image: url('svg/exception selected.svg');
+}
+
+.incident {
+    background-image: url('svg/incident unselected.svg');
+}
+
+.incident-active {
+    background-image: url('svg/incident selected.svg');
+}
+
+.userTask {
+    background-image: url('svg/task unselected.svg');
+    margin-top: -0.5em !important;
+}
+
+.userTask-active {
+    background-image: url('svg/task selected.svg');
+    margin-top: -0.5em !important;
+}
+
+.hub {
+    background-image: url('svg/hub unselected.svg');
+}
+
+.hub-active {
+    background-image: url('svg/hub selected.svg');
+}
+
+.profile {
+    background-image: url('svg/profile unselected.svg');
+}
+
+.profile-active {
+    background-image: url('svg/profile selected.svg');
+}
+
+.back:before {
+    background-image: url('svg/task selected.svg');
+}
+
+.userTaskBackground {
+    position: absolute;
+    bottom: 0;
+    background-position: center center;
+    z-index: -1;
+    height: 5em;
+    width: 5em;
+    left: 50%;
+    margin: 0 0 0 -2.5em;
+}
+
+.userTaskBackground-inactive {
+    background-image: url('svg/tasks circle unselected.svg');
+}
+
+.userTaskBackground-active {
+    background-image: url('svg/tasks circle.svg');
+}
+
+.radio-multi-active {
+    background-image: url('svg/multiple checked.svg');
+}
+
+.radio-active {
+    background-image: url('svg/q&a option selected.svg');
+}
+
+.radio-inactive {
+    background-image: url('svg/q&a option unselected.svg');
+}
+
+.taskApproved {
+    background-image: url('svg/approve-thumb.svg');
+}
+
+.taskDisapproved {
+    background-image: url('svg/disapprove-thumb.svg');
+}
+
+.exceptionDetailsContainer {
+    padding: 1em;
+    color: #000;
+    background-color: #ffffff;
+    margin: 0 1em;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+.exceptionDetailsContainer .titleContainer {
+    margin: 0.5em 0 0 0;
+}
+
+.exceptionDetailsContainer .exceptionComment {
+    width: 100%;
+    margin: 1em 0;
+    line-height: 1em;
+    font-family: LatoWeb;
+    text-align: left;
+    display: inline-flex;
+}
+
+.exceptionComment div {
+    display: inline;
+}
+
+.exceptionComment div:first-child {
+    width: 1em;
+    height: 1em;
+    background-size: contain;
+    background: url('svg/exception quotes.svg') no-repeat center top;
+    margin: 0 0.25em 0 0;
+}
+
+.exceptionComment div:last-child {
+    width: 90%;
+}
+
+.approveDisapproveExceptionContainer {
+    height: 4em;
+    width: 100%;
+}
+
+.approveDisapproveExceptionContainer > div {
+    height: 4em;
+    width: 4em;
+}
+
+.approveDisapproveExceptionContainer > div:first-child {
+    float: left;
+    margin: 0 0 0 1em;
+}
+
+.approveDisapproveExceptionContainer > div:last-child {
+    float: right;
+    margin: 0 1em 0 0;
+}
+
+.resultIconContainer {
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center center;
+    top: 10%;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+}
+
+.resultTextContainer {
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 1em;
+    right: 1em;
+    top: 50%;
+    bottom: 5em;
+    background-size: contain;
+}
+
+.resultTextContainer > div:first-child {
+    font-size: 1.5em !important;
+    font-weight: bold;
+}
+
+.pass {
+    background-image: url('svg/Q&A medal.svg');
+}
+
+.passText {
+    background-image: url('svg/papuPass.svg');
+}
+
+.fail {
+    background-image: url('svg/Q&A thumbs down.svg');
+}
+
+.failText {
+    background-image: url('svg/papuFail.svg');
+}
+
+.qNavigatorContainer {
+    height: 3em;
+}
+
+.qNavigatorContainer > div {
+    display: inline;
+    color: #ffffff;
+    position: absolute;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.qNavigatorContainer > div:first-child {
+    margin: 0.2em 0 0 0.5em;
+    left: 0;
+}
+
+.qNavigatorContainer > div:last-child {
+    margin: 0.2em 0.5em 0 0;
+    right: 0;
+}
+
+.qNavigatorText {
+    left: 3em;
+    right: 3em;
+    text-align: center;
+    top: 1.2em;
+    font-size: 1em !important;
+}
+
+.questionContainer {
+    background: #ffffff;
+    padding: 1em;
+}
+
+.questionQ {
+    margin: 0 0 1em;
+}
+
+.singleQuestionA {
+    line-height: 1em;
+    margin: 0 0 1em 0;
+    padding: 0.5em 0;
+}
+
+.singleQuestionA > div {
+}
+
+.singleQuestionA > div:first-child {
+    width: 1em;
+    height: 1em;
+    float: left
+}
+
+.singleQuestionA > div:last-child {
+    margin: 0 0 0 1.5em;
+}
+
+.textAreaContainer {
+    width: 100%;
+    height: 8em;
+}
+
+.qTextArea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.qInputDate {
+    margin: 1em auto !important;
+    padding: 0.5em;
+}
+
+.qInputNumber {
+    line-height: 1em;
+    padding: 0.5em;
+}
+
+.visibilityNone {
+    visibility: hidden !important;
+}
+
+@-webkit-keyframes cssAnimation {
+    from {
+        -webkit-transform: rotate(-45deg) scale(2.5);
+    }
+    to {
+        -webkit-transform: rotate(-45deg) scale(1);
+    }
+}
+
+/* Exception Screen CSS */
+
+.exp_wrapper {
+    position: absolute;
+    height: 78%;
+    overflow: auto;
+}
+
+.exp_row {
+    position: relative;
+    display: inline-block;
+    margin: 0.5% 2%;
+    max-width: 96%;
+    width: 96%;
+}
+
+.tab-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all .35s;
+}
+
+.tab-growHeight {
+    max-height: 14em;
+    height: 12em;
+    background-color: white;
+    margin-top: 0%;
+}
+
+/* Exp Title */
+.exp_title {
+    display: block;
+    width: 96%;
+    margin: 0% 2% 2% 2%;
+    height: 3.125em;
+    text-align: center;
+}
+
+.exp_title_label {
+    position: relative;
+    top: 34%;
+    color: white;
+    font-size: 1.375em;
+    font-family: Helvetica Narrow, sans-serif;
+
+}
+
+/*Right Div */
+.exp_left_wrapper {
+    width: 65%;
+    height: 5em;
+    background-color: #fff;
+    float: left;
+}
+
+.exp_left_wrapper .rowtitle {
+    display: block;
+    font-family: Helvetica Narrow, sans-serif;
+    font-weight: 500;
+    font-size: 1.3125em;
+    color: rgb(98, 98, 98);
+    margin: 4% 4% 1% 4%;
+    width: 100% !important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.exp_left_wrapper .package,
+.exp_left_wrapper .packagetitle {
+    display: inline-block;
+}
+
+.exp_left_wrapper .package {
+    background: #DCDCDC;
+    border: 0.5px solid #979797;
+    box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.50);
+    border-radius: 4px;
+    font-family: LatoWeb, Arial, sans-serif;
+    font-size: 0.7em;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 2px #000000;
+    float: left;
+    margin-right: 3%;
+    margin-left: 5%;
+    margin-top: 2.5%;
+    height: 1.8em;
+    width: 4.5em;
+}
+
+.exp_left_wrapper .packagetitle {
+    font-family: Gill Sans Extrabold, sans-serif;
+    font-weight: lighter;
+    font-size: 14px;
+    width: 55%;
+    vertical-align: top;
+    padding-top: 3.2%;
+    color: #777;
+
+}
+
+/* Left Div */
+.exp_right_wrapper {
+    background-color: #fff;
+    width: 35%;
+    height: 5em;
+    float: right;
+}
+
+.reqButton {
+    height: 1.875em; /*30px*/
+    min-width: 6em; /*80px */
+    margin: -20px -40px;
+    position: relative;
+    top: 34%;
+    left: 50%;
+    font-family: Lato-Bold;
+    color: #5A5A5A;
+    text-align: center;
+    font-family: Gill Sans Extrabold, sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+    border: 1px solid #979797;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+}
+
+.pendingColor {
+    background-color: #FFE790;
+}
+
+.daysRemColor {
+    background-color: #FF445B;
+}
+
+.reqColor {
+    background-color: #B8E986;;;
+}
+
+#tabcontenttextbox {
+    height: 7em;
+    width: 91%;
+    margin: -5% 4%;
+    border: 1px solid #979797;
+    box-shadow: inset 2px 2px 2px 0 #dddddd;
+}
+
+.packCard {
+    position: absolute;
+    height: 50%;
+    top: 12%;
+    margin-left: 2.5%;
+    width: 95%;
+    background: #fefefe;
+    color: #5a5a5a;
+    opacity: 1;
+    z-index: 10;
+    -webkit-box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid #BBB;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transformstyle: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: all 0.2s ease-in-out 0s; /* For Safari 3.1 to 6.0 */
+    transition: all 0.2s ease-in-out 0s;
+
+}
+
+.packCard.read {
+    top: 70%;
+}
+
+.packCardBG {
+    position: absolute;
+    margin-left: 0.5%;
+    width: 99.8%;
+    top: 9.8%;
+    background-image: url('svg/pack container.svg');
+    height: 50%;
+    background-size: cover;
+}
+
+.packCardBG.read {
+    top: 67.8%;
+}
+
+.packName, .policyCardName {
+    position: relative;
+    text-align: center;
+    top: 4%;
+    font-size: 1.8em;
+    padding: 1%;
+    font-family: LatoWeb;
+    font-weight: bold;
+}
+
+.packSubName {
+    position: relative;
+    text-align: center;
+    font-size: 1.3em;
+    font-family: LatoWeb;
+    top: 4%;
+    padding: 1% 1% 5%;
+}
+
+.policyCardDesc {
+    font-size: inherit;
+}
+
+.packImg {
+    position: relative;
+    text-align: center;
+    height: 55%;
+    width: 100%;
+    font-size: 2em;
+}
+
+.packCardDetails, .policyCardDetails {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #fefefe;
+    color: #5a5a5a;
+}
+
+.packContents, .policyContents {
+    position: relative;
+    margin: 5%;
+    margin-top: 9%;
+    overflow-y: scroll;
+    height: 62%;
+}
+
+.packContent, .policyContent {
+    position: relative;
+    margin: 5%;
+    cursor: pointer;
+}
+
+.policySymb, .noteSymb {
+    position: relative;
+    margin-right: 0.5em;
+    top: -0.2em;
+    height: 1em;
+    width: 1em;
+    display: inline-block;
+}
+
+.policyName, .noteName {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%;
+}
+
+/* Incident Screen */
+
+.repIncidentButDiv {
+    width: 100%;
+    height: 3.75em;
+}
+
+.repIncidentButton {
+    width: 80%;
+    background-color: rgba(242, 189, 28, 1);
+    color: rgba(63, 71, 72, 1);
+    margin: 1% 10% 1% 10%;
+    height: 2.75em;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 55px;
+    border: 1px solid #979797;
+    border-radius: 8px;
+    font-family: LatoWeb;
+    font-weight: bold;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.noIncidentsLabel {
+    position: fixed;
+    top: 50%;
+    width: 80%;
+    height: 2em;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+    vertical-align: middle;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.reportIncidentInputContainer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 1%;
+    right: 0;
+    display: inline-flex;
+    height: 3em;
+    align-items: center;
+}
+
+.reportIncidentInputContainer > input {
+    width: 80%;
+    line-height: 1em;
+    border: 1px #a1a1a1;
+    outline: none;
+    margin: 1%;
+    height: 2.5em;
+    border-radius: 3px;
+    padding: 0 0 0 0.5em;
+}
+
+.reportIncidentInputContainer > div {
+    width: 16%;
+    line-height: 1em;
+    color: grey;
+    border: 1px solid grey;
+    opacity: 0.6;
+    height: 2em;
+    border-radius: 8px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+}
+.reportIncidentInputContainer > div > div {
+    width: 100%;
+}
+.reportIncidentInputActive {
+    background-image: linear-gradient(180deg, #B4EC51 0%, #429321 100%);
+    border: 1px solid #08B400;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.50);
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+.reportedIncidentContainer {
+    position: fixed;
+    width: 100%;
+    bottom: 5em;
+    overflow-y: scroll;
+    top: 9em;
+}
+.incidentReported {
+    padding: 1em;
+    margin: 0.5em;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+
+.bubble_left {
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid #454545;
+    height: 50px;
+    width: 80%;
+    margin-left: 7%;
+    border-radius: 6px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: LatoWeb;
+    font-weight: lighter;
+    font-size: 1.0em;
+    line-height: 50px;
+    text-align: left;
+    padding: 0 0 0 0.5em;
+    margin-top: 10px;
+}
+
+.bubble_left:after, .bubble_left:before {
+    right: 100%;
+    top: 55%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.bubble_left:after {
+	border-color: rgba(136, 183, 213, 0);
+    border-right-color: #ffffff;
+    border-width: 10px;
+    margin-top: -1px;
+}
+
+.bubble_left:before {
+	border-color: rgba(194, 225, 245, 0);
+    border-right-color: #ffffff;
+    border-width: 1px;
+    margin-top: 0px;
+}
+
+.bubble_right {
+    position: relative;
+    border: 4px solid #c2e1f5;
+    background: rgba(248, 252, 189, 1);
+    border: 1px solid #454545;
+    height: 50px;
+    width: 80%;
+    margin-right: 6%;
+    border-radius: 6px;
+    text-align: left;
+    vertical-align: middle;
+    font-family: LatoWeb;
+    font-weight: lighter;
+    font-size: 1.0em;
+    line-height: 50px;
+    margin-top: 10px;
+    margin-left: 12%;
+    padding: 0 0 0 0.5em;
+}
+
+.bubble_right:after, .bubble_right:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.bubble_right:after {
+	border-color: rgba(136, 183, 213, 0);
+    border-left-color: rgba(248, 252, 189, 1);
+    border-width: 12px;
+    margin-top: -5px;
+}
+
+.bubble_right:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-left-color: #c2e1f5;
+
+}
+
+.exceptionRow {
+    height: 4em;
+    background-color: #ffffff;
+    margin: 0 0 0.5em 0;
+    padding: 0.5em;
+}
+
+.exceptionsContainer {
+    margin: 0.5em;
+}
+
+.exceptionTitle {
+    font-weight: bold;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.exceptionInfo {
+    margin: 0.5em 0;
+}
+
+.exceptionInfo > div:first-child {
+    float: left;
+    width: 65%;
+}
+
+.exceptionInfo > div:last-child {
+    float: right;
+    padding: 0.25em 0;
+    border-radius: 3px;
+    line-height: 1em;
+    width: 33%;
+    opacity: 0.95;
+    color: #5A5A5A;
+    text-align: center;
+    overflow: hidden;
+    font-family: LatoWebBold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.exceptionInfo > div:first-child > div {
+    float: left;
+    width: 40% !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.exceptionInfo > div:first-child > div:last-child {
+    margin: 0.2em 0 0 0.2em;
+}
+
+.requestBtActive {
+    background: #B8E986;
+    border: 1px solid #979797;
+    box-shadow: 0 0 4px 0 #B8E986;
+}
+
+.requestBtInActive {
+    background: #FFE790;
+    border: 1px solid #979797;
+    box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.50);
+}
+
+.exceptionCommentContainer {
+    height: 2em;
+}
+
+.exceptionCommentContainer textarea {
+    width: 94%;
+    padding: 3%;
+    height: 5em;
+    margin: 0.5em 0 0 0;
+    box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, 0.50);
+}
+
+.exceptionCommentContainer span {
+    display: none;
+}
+
+.exceptionRowExpanded {
+    height: 10em !important;
+}
+
+.talkToUsTextArea {
+    border: 1px solid grey;
+    height: 30%;
+    width: 100%;
+}
+
+.sendMessageBt {
+    display: inline-flex;
+    align-items: center;
+    width: 70%;
+    padding: 5% 15%;
+}
+
+.sendMessageBt > div {
+    width: 100%;
+    text-align: center;
+    background-color: rgba(255,255,255, 0.4);
+    padding: 1em;
+    border-radius: 4px;
+    line-height: 1em;
+    height: 1em;
+    box-shadow: inset 0 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.sendMessageBt > div > div:first-child {
+    height: 1em;
+    width: 1em;
+    background-size: contain;
+    background: url('svg/pencil.svg') no-repeat center;
+    margin: 0 10px 0 0;
+}
+
+.sendMessageBt > div > div {
+    display: inline-flex
+}
+
+.messageQuote {
+    width: 1.2em;
+    height: 1.2em;
+    background-size: contain;
+    background: url('svg/exception quotes.svg') no-repeat center top;
+    margin: 0 0 1em 0;
+}
+
+.messageTextArea {
+    width: 94%;
+    height: 10em;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    font-family: latoWeb;
+}
+
+.messageSend {
+    float: right;
+    display: flex;
+    margin: 1em;
+    height: 1em;
+    line-height: 1em;
+    font-size: 1.1em;
+}
+
+.messageSend > div:first-child {
+    margin: 0.2em 1em;
+}
+
+.messageSend > div:last-child {
+    transform: rotate(180deg);
+}
+
+.yellowBackground {
+    background: #FFFBDD !important;
+}
+
+.messageSenderImage {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: solid 1px grey;
+    margin: 0 1em 0 0;
+}
+
+.messageSenderTitle {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+}
+
+.messageSummary {
+    position: absolute;
+    top: 7em;
+    bottom: 2em;
+    left: 0.5em;
+    right: 0.5em;
+    width: auto;
+    overflow-y: scroll;
+    margin: 0;
+}
+
+.messageDone {
+    position: fixed;
+    bottom: 5em;
+    right: 1.25em;
+}
+
+.textCenter {
+    text-align: center;
+}

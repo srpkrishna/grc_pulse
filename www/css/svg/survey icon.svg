@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100%" height="100%" viewBox="0 0 35 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.1 (12002) - http://www.bohemiancoding.com/sketch -->
+    <title>q&amp;a copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="art-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Task-Detail" sketch:type="MSLayerGroup" transform="translate(-90.000000, -595.000000)">
+            <g id="q&amp;a-copy" transform="translate(90.000000, 595.000000)">
+                <path d="M34.453125,11.8420312 L34.453125,41.4471094 C34.453125,43.4095313 32.8570312,45 30.8889844,45 L3.56414062,45 C1.59539063,45 0,43.4095313 0,41.4471094 L0,3.55289062 C0,1.59046875 1.59539063,0 3.56414062,0 L22.5724219,0 L34.453125,11.8420312 L34.453125,11.8420312 Z" id="Shape" fill="#067FCB" sketch:type="MSShapeGroup"></path>
+                <text id="Type-something" sketch:type="MSTextLayer" font-family="Lato" font-size="24" font-weight="686" fill="#FFFFFF">
+                    <tspan x="12" y="32">?</tspan>
+                </text>
+                <path d="M34.453125,11.1789844 L34.453125,12.6527344 L24.7408594,12.6527344 C22.7299219,12.6527344 21.8025,11.0214844 21.8025,9.00984375 L21.8025,0 L23.2734375,0 L34.453125,11.1789844 L34.453125,11.1789844 Z" id="Shape" fill="#7CC9F9" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>
