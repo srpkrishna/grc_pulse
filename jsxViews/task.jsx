@@ -36,7 +36,7 @@ define(function (require) {
 
     var TaskResourceList = React.createClass({
         render: function () {
-            var resources = JSON.parse(this.props.resources), surveys = JSON.parse(this.props.surveys), counter = 0;
+            var resources = this.props.resources, surveys = this.props.surveys, counter = 0;
             var resourceNodes = resources.map(function (resource) {
                 return (
                     <Resource data={resource} key={counter++} isSurvey={false}/>
@@ -133,7 +133,7 @@ define(function (require) {
                 );
             }
             else {
-                var files = this.state.data.Resources__c;
+                var files = this.state.data.Resources__c || [];
                 if (files && (typeof files === "string")) {
                     files = $.parseJSON(files)
                 }
