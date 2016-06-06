@@ -35,3 +35,8 @@
 <no "No">
 <survey_pass_bt_text "Proceed to attestation">
 <survey_fail_bt_text "Let me try it again">
+<status "Status">
+<pending_approval "Pending approval">
+<approved "Approved">
+<activity_task_pending "Pending {{$name}}'s approval">
+<activity_task_approved "{{$name}} approved">

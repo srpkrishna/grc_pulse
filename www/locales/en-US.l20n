@@ -55,3 +55,8 @@
 <ceo_message_placeholder "Please type your message here...!">
 <ceo_message_title "A message from {{$userName}}">
 <done "Done">
+<status "Status">
+<pending_approval "Pending approval">
+<approved "Approved">
+<activity_task_pending "Pending {{$name}}'s approval">
+<activity_task_approved "{{$name}} approved">

@@ -286,7 +286,9 @@ define(function (require) {
                 var getExceptionComment = require("./serverData/getExceptionComment");
                 getExceptionComment(action.params.requestedExceptionId, function (data) {
                     var comment = data.records && data.records.length ? data.records[0].Comment__c : "No reason provided";
+                    var status = data.records && data.records.length ? data.records[0].Exception_Approver_Level__c : "NA";
                     store.getTaskDetails(action.params.taskId).Comment__c = comment;
+                    store.getTaskDetails(action.params.taskId).Exception_Approver_Level__c = status;
                     store.emitExceptionCommentAvailable();
                 });
                 break;

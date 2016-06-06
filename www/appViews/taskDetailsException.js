@@ -52,6 +52,49 @@ define (function(require) {
         },
         render: function () {
             var data = this.state.data;
+            var approveNode = null, exceptionActions;
+            var approveLevels = data.Exception_Approver_Level__c;
+            if (approveLevels && (typeof approveLevels === "string")) {
+                try {
+                    approveLevels = $.parseJSON(approveLevels);
+                }
+                catch (e) {
+                    console.log("ERROR: " + e);
+                }
+            }
+            if (data.Activity_Task__c && approveLevels && (typeof approveLevels === "object")) {
+                var levelsNode = approveLevels.map(function (level, index) {
+                    var status = "";
+                    if (level.status === "Approved") {
+                        status = getString("activity_task_approved", {name: level.name});
+                    }
+                    else {
+                        status = getString("activity_task_pending", {name: level.name});
+                    }
+                    return (
+                        React.createElement("div", {key: index}, status)
+                    );
+                });
+                approveNode = (
+                    React.createElement("div", {className: "exceptionTaskStatus"}, 
+                        React.createElement("div", null, getString("status")), 
+                        React.createElement("div", null, levelsNode)
+                    )
+                );
+                exceptionActions = (
+                    React.createElement("div", {className: "approveDisapproveExceptionContainer", onClick: this._onClickApproveDisapprove}, 
+                        React.createElement("div", {className: "activityTaskApproved", "data-type": "Approved"})
+                    )
+                );
+            }
+            else {
+                exceptionActions = (
+                    React.createElement("div", {className: "approveDisapproveExceptionContainer", onClick: this._onClickApproveDisapprove}, 
+                        React.createElement("div", {className: "taskDisapproved", "data-type": "Disapproved"}), 
+                        React.createElement("div", {className: "taskApproved", "data-type": "Approved"})
+                    )
+                );
+            }
             return (
                 React.createElement("div", {className: "pageContainer"}, 
                     React.createElement("div", {className: "pageTitle"}, getString("task_details")), 
@@ -69,10 +112,8 @@ define (function(require) {
                             React.createElement("div", null), 
                             React.createElement("div", null, data.Comment__c)
                         ), 
-                        React.createElement("div", {className: "approveDisapproveExceptionContainer", onClick: this._onClickApproveDisapprove}, 
-                            React.createElement("div", {className: "taskDisapproved", "data-type": "Disapproved"}), 
-                            React.createElement("div", {className: "taskApproved", "data-type": "Approved"})
-                        )
+                        approveNode, 
+                        exceptionActions
                     )
                 )
             );

@@ -7,6 +7,7 @@ define(function (require) {
         'taskpolicy TEXT' +
         ')';
     var createIncidentReportingTable = "CREATE TABLE IF NOT EXISTS reportedIncidents (incidentDate)";
+    var loginDetailsTable = "CREATE TABLE IF NOT EXISTS loginDetailsTable (access_token, id, instance_url, issued_at, refresh_token, scope, signature, token_type)";
     var getOpenDatabase = function () {
         try {
             if (!!window.openDatabase)

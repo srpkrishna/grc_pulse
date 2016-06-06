@@ -733,6 +733,9 @@ div.taskContainer > div.task > .summary {
     background-color: #ffffff;
     margin: 0 1em;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    bottom: 2em;
 }
 
 .exceptionDetailsContainer .titleContainer {
@@ -764,6 +767,22 @@ div.taskContainer > div.task > .summary {
     width: 90%;
 }
 
+.exceptionTaskStatus {
+    margin: 1em 0;
+}
+
+.exceptionTaskStatus > div:first-child {
+    margin: 0 0 0.5em;
+}
+
+.exceptionTaskStatus > div:last-child {
+    color: green;
+}
+
+.exceptionTaskNotApproved {
+    color: red !important;
+}
+
 .approveDisapproveExceptionContainer {
     height: 4em;
     width: 100%;
@@ -782,6 +801,13 @@ div.taskContainer > div.task > .summary {
 .approveDisapproveExceptionContainer > div:last-child {
     float: right;
     margin: 0 1em 0 0;
+}
+
+.activityTaskApproved {
+    background: url("img/done checkbox.png") no-repeat center;
+    background-size: contain;
+    float: none !important;
+    margin: 0 auto !important;
 }
 
 .resultIconContainer {

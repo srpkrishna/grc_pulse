@@ -52,6 +52,49 @@ define (function(require) {
         },
         render: function () {
             var data = this.state.data;
+            var approveNode = null, exceptionActions;
+            var approveLevels = data.Exception_Approver_Level__c;
+            if (approveLevels && (typeof approveLevels === "string")) {
+                try {
+                    approveLevels = $.parseJSON(approveLevels);
+                }
+                catch (e) {
+                    console.log("ERROR: " + e);
+                }
+            }
+            if (data.Activity_Task__c && approveLevels && (typeof approveLevels === "object")) {
+                var levelsNode = approveLevels.map(function (level, index) {
+                    var status = "";
+                    if (level.status === "Approved") {
+                        status = getString("activity_task_approved", {name: level.name});
+                    }
+                    else {
+                        status = getString("activity_task_pending", {name: level.name});
+                    }
+                    return (
+                        <div key={index}>{status}</div>
+                    );
+                });
+                approveNode = (
+                    <div className="exceptionTaskStatus">
+                        <div>{getString("status")}</div>
+                        <div>{levelsNode}</div>
+                    </div>
+                );
+                exceptionActions = (
+                    <div className="approveDisapproveExceptionContainer" onClick={this._onClickApproveDisapprove}>
+                        <div className="activityTaskApproved" data-type="Approved"></div>
+                    </div>
+                );
+            }
+            else {
+                exceptionActions = (
+                    <div className="approveDisapproveExceptionContainer" onClick={this._onClickApproveDisapprove}>
+                        <div className="taskDisapproved" data-type="Disapproved"></div>
+                        <div className="taskApproved" data-type="Approved"></div>
+                    </div>
+                );
+            }
             return (
                 <div className="pageContainer">
                     <div className="pageTitle">{getString("task_details")}</div>
@@ -69,10 +112,8 @@ define (function(require) {
                             <div></div>
                             <div>{data.Comment__c}</div>
                         </div>
-                        <div className="approveDisapproveExceptionContainer" onClick={this._onClickApproveDisapprove}>
-                            <div className="taskDisapproved" data-type="Disapproved"></div>
-                            <div className="taskApproved" data-type="Approved"></div>
-                        </div>
+                        {approveNode}
+                        {exceptionActions}
                     </div>
                 </div>
             );
