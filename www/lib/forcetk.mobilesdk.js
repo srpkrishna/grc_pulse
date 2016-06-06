@@ -651,7 +651,9 @@
         forcetk.Client.prototype.downloadAWSFile = function (note, callback, error) {
             var fileTransfer = new FileTransfer();
             $("#loading").removeClass("hide");
-            var fileURL = JSON.parse(note.Body).fileUrl;
+            var url = JSON.parse(note.Body).fileUrl;
+            var filename = encodeURIComponent(url.substring(url.lastIndexOf("/")+1, url.length));
+            var fileURL = url.substring(0, url.lastIndexOf("/")+1) + filename;
             fileTransfer.download(
                 fileURL,
                 cordova.file.dataDirectory +"/"+ note.Id +"/"+note.Title,
