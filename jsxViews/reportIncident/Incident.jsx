@@ -26,6 +26,9 @@ define(function (require) {
         }
     });
     var IncidentList = React.createClass({
+        componentDidMount: function () {
+            mixpanel.track("App-On-ReportIncident-Incident-List-Loaded");
+        },
         render: function () {
             var incidents = this.props.incidents;
             var incidentNode = incidents.map(function (incident, index) {
@@ -46,6 +49,7 @@ define(function (require) {
             actions.changeUrl({
                 href: goToUrl
             });
+            mixpanel.track("App-On-ReportIncident-Report-A-Incident");
         },
         getInitialState: function () {
             return getState();
@@ -56,6 +60,7 @@ define(function (require) {
                 actions.getReportedIncidentFromDB();
                 clearTimeout(setTimeoutID);
             }, 0);
+            mixpanel.track("App-On-ReportIncident-Loaded");
         },
         componentWillUnmount: function () {
             store.removeReportedIncidentListAvailableListener(this._onIncidentListAvailable);

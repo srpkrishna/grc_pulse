@@ -108,6 +108,7 @@ define(function (require) {
     var IncidentQuestioners = React.createClass({
         componentDidMount: function () {
             store.addIncidentReportedListener(this._onIncidentReported);
+            mixpanel.track("App-On-ReportIncident-Question-Loaded");
         },
         componentWillUnmount: function () {
             store.removeIncidentReportedListener(this._onIncidentReported);

@@ -7,6 +7,7 @@ define(function (require) {
             actions.changeUrl({
                 href: this.props.data.href
             });
+            mixpanel.track("App-On-UserAction-Clicked-" + this.props.data.text);
         },
         render: function () {
             var cssClass = "user-action-icon " + (this.props.data.activeView ? this.props.data.cssClass + "-active" : this.props.data.cssClass);

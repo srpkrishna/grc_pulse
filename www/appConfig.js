@@ -1,3 +1,4 @@
+mixpanel.track("App-Init");
 var languagesSupported = ["en-US", "fr", "ho"];
 var defaultLanguage = "en-US";
 var loginUrl = "https://login.salesforce.com/";
@@ -40,7 +41,7 @@ function onDeviceReady() {
     }
     else {
         ref = cordova.InAppBrowser.open (getAuthorizeUrl(), '_blank', 'location=no,clearcache=yes');
-        ref.addEventListener('loadstop', function(evt) {
+        ref.addEventListener('loadstart', function(evt) {
             if (evt.url.startsWith(redirectUri)) {
                 ref.close();
                 sessionCallback(decodeURIComponent(evt.url));
@@ -64,6 +65,7 @@ function sessionCallback(loc) {
         alert("Unauthorized: No OAuth response");
     }
     else {
+        mixpanel.track("App-Login-Success-First-Time");
         setSessionResponseData(oauthResponse);
     }
 }
@@ -77,6 +79,7 @@ function setSessionResponseData(response) {
             window.localStorage.setItem(key, response[key]);
         }
     }
+    mixpanel.track("App-Login-Success");
     requirejs(["app/main", "util/notification"]);
 }
 function handleEvents() {

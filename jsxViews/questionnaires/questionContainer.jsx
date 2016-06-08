@@ -26,6 +26,7 @@ define(function (require) {
                 });
                 clearTimeout(setTimeOutId);
             }, 0);
+            mixpanel.track("App-On-Questionnaires-Loaded");
         },
         componentWillUnmount: function () {
             store.removeQuestionnairesFetchedListener(this._onQuestionFetched);
@@ -53,7 +54,7 @@ define(function (require) {
                 questionnaireIndex: store.getDisplayQuestionnaireIndex(),
                 isPass: "resultPending"
             });
-            setTimeOutId = setTimeout(function () {
+            var setTimeOutId = setTimeout(function () {
                 actions.getQuestionnaires({
                     taskId: that.props.taskId,
                     questionnaireId: that.props.questionId

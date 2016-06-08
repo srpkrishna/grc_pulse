@@ -13,13 +13,15 @@ define (function(require) {
                 type: type,
                 taskId: this.props.taskId
             });
+            mixpanel.track("App-On-Exception-Task-" + type);
         },
         _onApproveDisapprove: function () {
-            setTimeout(function () {
+            var setTimeoutId = setTimeout(function () {
                 actions.checkTask({
                     taskTypes: "All",
                     emitEvent: true
                 });
+                clearTimeout(setTimeoutId);
             }, 0);
         },
         _onTaskChange: function () {
@@ -44,6 +46,7 @@ define (function(require) {
                 });
                 clearTimeout(setTimeOutId);
             }, 0);
+            mixpanel.track("App-On-Exception-Task-Loaded");
         },
         componentWillUnmount: function () {
             store.removeExceptionCommentAvailableListener(this._onCommentFetched);

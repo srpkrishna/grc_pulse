@@ -21,7 +21,7 @@ define(function (require) {
                 } else {
                     alert("Resource of this type can't be viewed");
                 }
-
+                mixpanel.track("App-On-PolicyDetails-Clicked");
             },
             getInitialState: function () {
                 return {policyContents: []}
@@ -53,7 +53,7 @@ define(function (require) {
                         });
                     }
                 );
-
+                mixpanel.track("App-On-PolicyDetails-Load");
             },
             render: function () {
                 var policyName = store.getParameterByName("pname");

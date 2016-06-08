@@ -21,7 +21,10 @@ define(function (require) {
             );
         }
     });
-    var dateAnswerQuestion = React.createClass({displayName: "dateAnswerQuestion",
+    var numberAnswerQuestion = React.createClass({displayName: "numberAnswerQuestion",
+        componentDidMount: function () {
+            mixpanel.track("App-On-NumberAnswerQuestion-Loaded");
+        },
         _onAnswerEntered: function (data) {
             this.props.onAnswerSelected(data);
         },
@@ -38,5 +41,5 @@ define(function (require) {
             );
         }
     });
-    return dateAnswerQuestion;
+    return numberAnswerQuestion;
 });

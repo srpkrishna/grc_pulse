@@ -17,6 +17,7 @@ define(function (require) {
             actions.changeUrl({
                 href: goToUrl
             });
+            mixpanel.track("App-On-TaskDetails-Resource-Fetched");
         },
         downloadResource: function () {
             var that = this;
@@ -32,7 +33,6 @@ define(function (require) {
                             Title: that.props.data.name
                         }
                     }
-
                     store.getResource(note, that.openViewer);
                 }
             );
@@ -73,9 +73,11 @@ define(function (require) {
                     alert(getString("error_contentType_notsupported"))
                 }
             }
+            mixpanel.track("App-On-TaskDetails-Resource-Clicked");
         },
         componentDidMount: function () {
             this.query();
+            mixpanel.track("App-On-TaskDetails-Resource-Loaded");
         },
         componentWillUnmount: function () {
 
@@ -161,8 +163,8 @@ define(function (require) {
         return {daysLeft: daysLeft, text : daysLeft + "d"};
     }
     var TaskDetails = React.createClass({displayName: "TaskDetails",
-        _onClick: function (event) {
-            
+        componentDidMount: function () {
+            mixpanel.track("App-On-TaskDetails-Loaded");
         },
         render: function () {
             var taskId = this.props.taskId;

@@ -35,6 +35,9 @@ define(function (require) {
         }
     });
     var booleanAnswerQuestion = React.createClass({
+        componentDidMount: function () {
+            mixpanel.track("App-On-BooleanAnswerQuestion-Loaded");
+        },
         _onAnswerSelected: function (id) {
             this.props.onAnswerSelected(id);
         },

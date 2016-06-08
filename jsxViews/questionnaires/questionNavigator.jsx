@@ -44,6 +44,7 @@ define(function (require) {
             if (newIndex === (this.state.length -1)) {
                 actions.displayScoreCalculation();
             }
+            mixpanel.track("App-On-Questionnaires-Navigator-Clicked");
         },
         render: function () {
             var textDisplay = this.state.length ? ((currentIndex + 1) + " of " + this.state.length) : "Loading...";

@@ -47,7 +47,7 @@ define(function (require) {
                 unReadMc.add(new Hammer.Swipe({direction: Hammer.DIRECTION_VERTICAL, threshold: 0}));
                 unReadMc.add(new Hammer.Tap({event: "singletap"}));
                 unReadMc.on("swipedown", this._onUnReadClick);
-                unReadMc.on("singletap", this._goToCardDetail)
+                unReadMc.on("singletap", this._goToCardDetail);
 
                 unReadMc.on("dragleft dragright", function (ev) {
                     ev.gesture.preventDefault();
@@ -146,7 +146,7 @@ define(function (require) {
                 obj.push(
                     <div className={cssName} key={i} id={"packCard"+i}>
                         <div className="packName">{pack.Name}</div>
-                        <div className="packSubName">{pack.Pack_Description__c}</div>
+                        <div className="packSubName">{pack.Pack_Description__c ? pack.Pack_Description__c : ""}</div>
                         <img className="packImg" src={fileName}></img>
                     </div>
                 );

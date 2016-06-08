@@ -31,6 +31,7 @@ define(function (require) {
                 if (!this.isCommentFieldVisible) {
                     this.isCommentFieldVisible = true;
                     this.setState({});
+                    mixpanel.track("App-On-Exception-Clicked");
                 }
                 else {
                     var comment = store.getUserCommentForException(this.props.data.Id);
@@ -39,11 +40,9 @@ define(function (require) {
                             exceptionId: this.props.data.Id,
                             comment: comment
                         });
+                        mixpanel.track("App-On-Exception-Requested");
                     }
                 }
-            }
-            else {
-
             }
         },
         _onCommentChange: function (event) {
@@ -83,7 +82,6 @@ define(function (require) {
     });
     var ExceptionList = React.createClass({displayName: "ExceptionList",
         render: function () {
-            var that = this;
             var exceptions = this.props.exceptions, counter = 0;
             var exceptionsNodes = exceptions.map(function (exception) {
                 return (
@@ -116,7 +114,9 @@ define(function (require) {
             store.addExceptionListAvailableListener(this._onExceptionListChange);
             var setTimeOutId = setTimeout(function () {
                 actions.getExceptionList();
+                clearTimeout(setTimeOutId);
             }, 0);
+            mixpanel.track("App-On-Exception-Loaded");
         },
         componentWillUnmount: function () {
             store.removeExceptionListAvailableListener(this._onExceptionListChange);

@@ -1,7 +1,6 @@
 define(function (require) {
     var store = require("util/store");
     var actions = require("util/actions");
-    var db = store.getDB();
 
     function getState() {
         return {
@@ -20,7 +19,9 @@ define(function (require) {
             store.addUserProfileImageListener(this._onUserProfileImage);
             var setTimeOutId = setTimeout(function () {
                 actions.getUserInfo();
+                clearTimeout(setTimeOutId);
             }, 0);
+            mixpanel.track("App-On-Profile-Loaded");
         },
         componentWillUnmount: function () {
             store.removeUserInfoFetchListener(this._onUserInfo);
@@ -44,14 +45,17 @@ define(function (require) {
             actions.changeUrl({
                 href: "/talkToUs"
             });
+            mixpanel.track("App-On-Profile-Feedback-Clicked");
         },
         _onLogout: function () {
             actions.logout();
+            mixpanel.track("App-On-Profile-Logout");
         },
         _onMessage: function () {
             actions.changeUrl({
                 href: "/message"
             });
+            mixpanel.track("App-On-Profile-Drip-Message-Clicked");
         },
         render: function () {
             var userInfo = this.state.userInfo;

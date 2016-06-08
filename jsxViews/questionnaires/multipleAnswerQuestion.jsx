@@ -35,6 +35,9 @@ define(function (require) {
         }
     });
     var multipleAnswerQuestions = React.createClass({
+        componentDidMount: function () {
+            mixpanel.track("App-On-MultipleAnswerQuestions-Loaded");
+        },
         _onAnswerSelected: function (index) {
             var answers = this.props.questionnaire.userAnswer;
             if (!answers) {

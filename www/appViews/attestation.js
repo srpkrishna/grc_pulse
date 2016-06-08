@@ -12,6 +12,7 @@ define(function (require) {
             store.addTaskIsCompletedListener(this._onTaskCompleteServerUpdate);
             store.addTaskIsCompletedDBUpdatedListener(this._onTaskCompleteDBUpdate);
             store.addTaskChangeListener(this._onTaskChange);
+            mixpanel.track("App-On-Attestation-Loaded");
             //this.addEvents();
         },
         componentWillUnmount: function () {
@@ -88,6 +89,7 @@ define(function (require) {
                                 actions.taskIsComplete({
                                     taskId: that.props.taskId
                                 });
+                                mixpanel.track("App-On-Attestation-Clicked");
                                 break;
                             }
                             case 2:
@@ -95,6 +97,7 @@ define(function (require) {
                                 actions.changeUrl({
                                     href: "/root/task"
                                 });
+                                mixpanel.track("App-On-Attestation-Declined");
                                 break;
                             }
                         }
@@ -108,6 +111,7 @@ define(function (require) {
             actions.taskIsComplete({
                 taskId: this.props.taskId
             });
+            mixpanel.track("App-On-Message-Read");
         },
         render: function () {
             if (this.props.isMessage) {

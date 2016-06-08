@@ -10,6 +10,7 @@ define(function (require) {
                     emitEvent: true
                 });
             }, 0);
+            mixpanel.track("App-Splash-Loaded");
         },
         componentWillUnmount: function () {
             store.removeTaskChangeListener(this._onTaskChange);

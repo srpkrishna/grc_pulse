@@ -230,6 +230,7 @@ define(function (require) {
         },
         componentDidMount: function () {
             store.addTaskChangeListener(this._onTaskChange);
+            mixpanel.track("App-On-Task-Loaded");
         },
         componentWillUnmount: function () {
             store.removeTaskChangeListener(this._onTaskChange);
@@ -248,6 +249,7 @@ define(function (require) {
                     href: "/taskDetails/" + id
                 });
             }
+            mixpanel.track("App-On-Task-Clicked");
         },
         fetchTask: function () {
             actions.checkTask({

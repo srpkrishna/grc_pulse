@@ -22,6 +22,9 @@ define(function (require) {
         }
     });
     var dateAnswerQuestion = React.createClass({
+        componentDidMount: function () {
+            mixpanel.track("App-On-DateAnswerQuestion-Loaded");
+        },
         _onAnswerEntered: function (date) {
             this.props.onAnswerSelected(date);
         },

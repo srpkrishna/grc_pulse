@@ -35,6 +35,9 @@ define(function (require) {
         }
     });
     var singleAnswerQuestion = React.createClass({
+        componentDidMount: function () {
+            mixpanel.track("App-On-SingleAnswerQuestion-Loaded");
+        },
         _onAnswerSelected: function (index) {
             this.props.onAnswerSelected(index);
         },

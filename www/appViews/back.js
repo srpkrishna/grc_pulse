@@ -6,6 +6,7 @@ define(function (require) {
             actions.changeUrl({
                 href: -1
             });
+            mixpanel.track("App-On-Back-Clicked");
         },
         render: function () {
             return (

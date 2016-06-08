@@ -22,17 +22,20 @@ define(function (require) {
         _onClick: function () {
             if (this.state.message !== "" && this.state.message.length > 5) {
                 actions.sendCEOMessage();
+                mixpanel.track("App-On-DripMessage-Clicked");
             }
         },
         _onMessageSend: function () {
             actions.changeUrl({
                 href: -1
             });
+            mixpanel.track("App-On-DripMessage-Send");
         },
         componentDidMount: function () {
             store.addCEOMessageSendListener(this._onMessageSend);
             this.textBox = $(this.refs["message"]);
             this.textBox.focus();
+            mixpanel.track("App-On-DripMessage-Loaded");
         },
         componentWillUnmount: function () {
             store.removeCEOMessageSendListener(this._onMessageSend);

@@ -22,6 +22,9 @@ define(function (require) {
         }
     });
     var descriptionAnswerQuestion = React.createClass({displayName: "descriptionAnswerQuestion",
+        componentDidMount: function () {
+            mixpanel.track("App-On-descriptionAnswerQuestion-Loaded");
+        },
         _onAnswerEntered: function (index) {
             this.props.onAnswerSelected(index);
         },

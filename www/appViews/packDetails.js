@@ -14,6 +14,7 @@ define(function (require) {
                 actions.changeUrl({
                     href: goToUrl
                 });
+                mixpanel.track("App-On-PackDetails-Clicked");
             },
             getInitialState: function () {
                 return {packContents: []}
@@ -43,9 +44,10 @@ define(function (require) {
                         that.setState({
                             packContents: data.records
                         });
+                        mixpanel.track("App-On-PackDetails-Fetched");
                     }
                 );
-
+                mixpanel.track("App-On-PackDetails-Loaded");
             },
             render: function () {
                 var packName = store.getParameterByName("pname");
