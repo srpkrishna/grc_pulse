@@ -35,7 +35,7 @@ body {
     position: relative;
     background: white;
     height: 100%;
-    left: 0%;
+    left: 0;
     opacity: 0.4;
     animation: move 2s infinite;
     -webkit-animation: move 2s infinite;
@@ -130,9 +130,8 @@ body {
 .fullScreen {
     width: 85%;
     height: 90%;
-    margin: 5%;
-    margin-top: 15%;
-    border: 0px;
+    margin: 15% 5% 5%;
+    border: 0;
 }
 
 .headerContainer {

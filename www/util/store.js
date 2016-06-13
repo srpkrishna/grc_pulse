@@ -230,10 +230,9 @@ define(function (require) {
             case constants.SEND_INCIDENT_REPORTED:
             {
                 var postIncident = require("./serverData/postIncidentReported");
-                var splitValue = action.params.questions[2].answer.split("T");
-                var dateSplit = splitValue[0].split("-");
-                var timeSplit = splitValue[1].split(":");
-                action.params.questions[2].answer = new Date(dateSplit[0], dateSplit[1], dateSplit[2], timeSplit[0] -1, timeSplit[1], 0);
+                var dateWithOutOffSet = new Date(action.params.questions[2].answer);
+                var millisecondsPassed = dateWithOutOffSet.getTime() + dateWithOutOffSet.getTimezoneOffset() * 60 * 1000;
+                action.params.questions[2].answer = new Date(millisecondsPassed);
                 postIncident (action.params.questions, function (data) {
                     if (data.success) {
                         var date = action.params.questions[2].answer;

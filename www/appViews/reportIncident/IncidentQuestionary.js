@@ -114,6 +114,10 @@ define(function (require) {
             store.removeIncidentReportedListener(this._onIncidentReported);
         },
         _onIncidentReported: function () {
+            for (var i in questions) {
+                questions[i].answer = "";
+            }
+            currentIndex = 0;
             actions.changeUrl({
                 href: -1
             });

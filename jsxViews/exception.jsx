@@ -38,9 +38,10 @@ define(function (require) {
                     if (comment && comment !== "") {
                         actions.requestException({
                             exceptionId: this.props.data.Id,
-                            comment: comment
+                            comment: new String(comment)
                         });
                         mixpanel.track("App-On-Exception-Requested");
+                        store.setUserCommentForException(this.props.data.Id, "");
                     }
                 }
             }
@@ -49,6 +50,7 @@ define(function (require) {
             var text = event.target.value;
             if (text || text === "") {
                 store.setUserCommentForException(this.props.data.Id, text);
+                this.setState({});
             }
         },
         render: function () {
@@ -73,7 +75,11 @@ define(function (require) {
                             <div onClick={this._onClick} className={requestButtonCSS}>{getString(status)}</div>
                         </div>
                         <div className={commentFieldCss}>
-                            ​<textarea ref={this.props.data.Id} onChange={this._onCommentChange} value={store.getUserCommentForException(this.props.data.Id)} placeholder={getString("exception_reason_place_holder")}></textarea>
+                            <textarea ref={this.props.data.Id}
+                                      onChange={this._onCommentChange}
+                                      value={store.getUserCommentForException(this.props.data.Id)}
+                                      placeholder={getString("exception_reason_place_holder")}>
+                            </textarea>
                         </div>
                     </div>
                 </div>
