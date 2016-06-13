@@ -1,7 +1,7 @@
 define(function (require) {
     var store = require("util/store");
     var actions = require("util/actions");
-    var db = store.getDB();
+    var db = store.getNewDB();
 
     var Attestation = React.createClass({displayName: "Attestation",
         getInitialState: function () {
@@ -22,10 +22,7 @@ define(function (require) {
         },
         query: function () {
             var that = this;
-            var params = [{
-                taskid: this.props.taskId
-            }];
-            db.getDataFromTable("resources", params, function (response) {
+            db.getResourcesByTaskId(this.props.taskId, function (response) {
                 if (response) {
                     var isActive = true;
                     for (var i = 0; i < response.length; i++) {

@@ -41,7 +41,8 @@ function onDeviceReady() {
     }
     else {
         ref = cordova.InAppBrowser.open (getAuthorizeUrl(), '_blank', 'location=no,clearcache=yes');
-        ref.addEventListener('loadstart', function(evt) {
+        var eventName = device.platform === "Android" ? 'loadstop' : "loadstart";
+        ref.addEventListener(eventName, function(evt) {
             if (evt.url.startsWith(redirectUri)) {
                 ref.close();
                 sessionCallback(decodeURIComponent(evt.url));
@@ -89,7 +90,7 @@ function handleEvents() {
         });
     }, false);
 }
-requirejs(["util/config", "jquery-2.1.4.min", "react", "react-dom.min", "l20n.min", "flux.min"], function (CONFIG, jquery, react, reactDOM, l20n) {
+requirejs(["util/config", "jquery-2.2.4.min", "react", "react-dom.min", "l20n.min", "flux.min"], function (CONFIG, jquery, react, reactDOM, l20n) {
     requirejs(["forcetk.mobilesdk"], function () {
         window.React = react;
         window.ReactDOM = reactDOM;

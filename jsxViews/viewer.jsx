@@ -42,11 +42,11 @@ define(function (require) {
             if (this.state.isResourceAttested) {
                 var policyId = store.getParameterByName("pid");
                 var resourceId = store.getParameterByName("rid");
-                var updateQuery = "UPDATE resources SET status=1 WHERE resourceid='" + resourceId + "' AND taskid='" + policyId + "'";
-                var db = store.getDB();
-                db.updateData(updateQuery);
-                actions.changeUrl({
-                    href: -1
+                var db = store.getNewDB();
+                db.updateResourceStatus(resourceId, policyId, function () {
+                    actions.changeUrl({
+                        href: -1
+                    });
                 });
             }
         },

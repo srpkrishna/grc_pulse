@@ -1,7 +1,6 @@
 define(function (require) {
     var store = require("util/store");
     var actions = require("util/actions");
-    var dbManager = store.getDB();
 
     var Resource = React.createClass({
         render: function () {

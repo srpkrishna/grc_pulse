@@ -64,9 +64,8 @@ define(function (require) {
         },
         _onSurveyResults: function (isPass) {
             if(isPass) {
-                var updateQuery = "UPDATE resources SET status=1 WHERE resourceid='" + this.props.questionId + "' AND taskid='" + this.props.taskId + "'";
-                var db = store.getDB();
-                db.updateData(updateQuery);
+                var db = store.getNewDB();
+                db.updateResourceStatus(this.props.questionId, this.props.taskId);
             }
             var that = this;
             setTimeoutIdGlobal = setTimeout(function() {

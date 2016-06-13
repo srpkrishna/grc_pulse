@@ -449,7 +449,7 @@
                             callback(request.response);
                         } catch (e) {
                             // display error message
-                            alert("Error reading the response: " + e.toString());
+                            //alert("Error reading the response: " + e.toString());
                         }
                     }
                     //refresh token in 401

@@ -1,7 +1,7 @@
 define(function (require) {
     var appDispatcher = require("./appDispatcher");
     var constants = require("./constants");
-    var db = require("./DBManager");
+    var dbNew = require("./db");
     var EventEmitter = require("event-emitter").EventEmitter;
     var assign = require("object-assign");
     var et = require("./events");
@@ -17,62 +17,6 @@ define(function (require) {
     var UserCommentForException = {};
     var reportedIncidentList = [];
     var ceoMessage = "";
-    var insertDataIntoTasksDB = function (tasksDetails) {
-        //Get the data for tasks and resources.
-        var insertTasks = [];
-        var insertResources = [];
-        for (var index = 0; index < tasksDetails.length; index++) {
-            var eachTaskDetail = tasksDetails[index];
-            var eachTaskDict = {};
-            for (var key in eachTaskDetail) {
-                var taskid;
-                if (key === "Id") {
-                    taskid = eachTaskDetail[key];
-                }
-                if (key !== "Resources__c" && key !== "Survey_Details__c") {
-                    if (key === "Id") {
-                        eachTaskDict["taskid"] = eachTaskDetail[key]
-                    }
-                    else if (key === "Name") {
-                        eachTaskDict["taskname"] = eachTaskDetail[key]
-                    }
-                    else if (key === "Department__c") {
-                        eachTaskDict["taskdepartment"] = eachTaskDetail[key]
-                    }
-                    else if (key === "Policy__c") {
-                        eachTaskDict["taskpolicy"] = eachTaskDetail[key]
-                    }
-                }
-                else if (key === "Resources__c" || key === "Survey_Details__c") {
-                    var resourceString = eachTaskDetail[key];
-                    var resourceArray = JSON.parse(resourceString);
-                    if (resourceArray) {
-                        for (var rind = 0; rind < resourceArray.length; rind++) {
-                            var eachResourceDict = {};
-                            var eResDict = resourceArray[rind];
-                            eachResourceDict["taskid"] = taskid;
-                            eachResourceDict["status"] = 0;
-                            for (var resourceKey in eResDict) {
-                                if (resourceKey === "id") {
-                                    eachResourceDict["resourceid"] = eResDict[resourceKey];
-                                } else if (resourceKey === "name") {
-                                    eachResourceDict["resourcename"] = eResDict[resourceKey];
-                                }
-                                else if (resourceKey === "minscore") {
-                                    eachResourceDict["minscore"] = eResDict[resourceKey];
-                                }
-                            }
-                            eachResourceDict["type"] = (key === "Resources__c" ? "r" : "q");
-                            insertResources.push(eachResourceDict);
-                        }
-                    }
-                }
-            }
-            insertTasks.push(eachTaskDict);
-        }
-        db.insertData("tasks", insertTasks);
-        db.insertData("resources", insertResources);
-    };
 
     appDispatcher.register(function (action) {
         switch (action.actionType) {
@@ -109,13 +53,46 @@ define(function (require) {
                 var getTask = require("./serverData/getTask");
                 getTask(function (data) {
                     tasks = data.records;
-                    db.prepareDb();
-                    insertDataIntoTasksDB(tasks);
+                    var insertResource = function (taskid, type, resources) {
+                        for (var j in resources) {
+                            var resource = resources[j];
+                            var resourceObj = {
+                                taskid: taskid,
+                                status: 0,
+                                resourceid: resource.id,
+                                resourcename: resource.name,
+                                minscore: resource.minscore,
+                                type: type
+                            };
+                            dbNew.insertTaskResource(resourceObj);
+                        }
+                    };
+                    for (var i in tasks) {
+                        var task = tasks[i];
+                        var taskObj = {
+                            taskid: task.Id,
+                            taskname: task.Name,
+                            taskdepartment: task.Department__c,
+                            taskpolicy: task.Policy__c
+                        };
+                        dbNew.insertTask(taskObj);
+                        var resources = null;
+                        var resourceString = task.Resources__c || [];
+                        if (resourceString && (typeof resourceString === "string")) {
+                            resources = JSON.parse(resourceString);
+                            insertResource(taskObj.taskid, "r", resources);
+                        }
+                        var surveys = null;
+                        var surveysString = task.Survey_Details__c || [];
+                        if (surveysString && (typeof surveysString === "string")) {
+                            surveys = JSON.parse(surveysString);
+                            insertResource(taskObj.taskid, "q", surveys);
+                        }
+                    }
                     var checkURL = store.getAppUrl();
                     if (action.params.emitEvent || checkURL.match(/task/ig)) {
                         store.emitTaskChange();
                     }
-                    //console.log(data);
                 });
                 break;
             }
@@ -170,11 +147,8 @@ define(function (require) {
             }
             case constants.TASK_IS_COMPLETE_UPDATE_DB:
             {
-                var params = [{
-                    taskid: action.params.taskId
-                }];
-                db.deleteData("tasks", params, function () {
-                    db.deleteData("resources", params, function () {
+                dbNew.deleteTaskByTaskId(action.params.taskId, function () {
+                    dbNew.deleteResourceByTaskId(action.params.taskId, function () {
                         store.emitTaskCompeteDBUpdated();
                     });
                 });
@@ -243,7 +217,7 @@ define(function (require) {
             }
             case constants.GET_REPORTED_INCIDENT:
             {
-                db.getReportedIncident(function (response) {
+                dbNew.getReportedIncident(function (response) {
                     reportedIncidentList = [];
                     for (var i = 0; i < response.length; i++) {
                         reportedIncidentList.push(response.item(i).incidentDate);
@@ -263,7 +237,7 @@ define(function (require) {
                 postIncident (action.params.questions, function (data) {
                     if (data.success) {
                         var date = action.params.questions[2].answer;
-                        db.insertIncident(date.getTime(), function (rowsEffected) {
+                        dbNew.insertIncident(date.getTime(), function (rowsEffected) {
                             store.emitIncidentReported();
                         });
                     }
@@ -464,8 +438,8 @@ define(function (require) {
         removeTaskIsCompletedListener: function (callback) {
             this.removeListener(et.TASK_IS_COMPLETE, callback);
         },
-        getDB: function () {
-            return db;
+        getNewDB: function () {
+            return dbNew;
         },
         emitTaskCompeteDBUpdated: function () {
             this.emit(et.TASK_IS_COMPLETE_DB_UPDATED);

@@ -27,7 +27,7 @@ define(function (require) {
 
                         React.createElement("div", {className: "packContent", key: i, onClick: that.handleClick.bind(that, i)}, 
                             React.createElement("img", {className: "policySymb", src: fileName}), 
-                            React.createElement("div", {className: "policyName"}, content.Policy_Name__c)
+                            React.createElement("div", {className: "policyName"}, content.Name)
                         )
                     );
                 });

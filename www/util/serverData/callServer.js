@@ -9,7 +9,7 @@ define(function () {
                 if (cbFailure) {
                     cbFailure(error);
                 }
-                alert("Error calling server :: " + error);
+                console.log("Error calling server :: " + error);
             });
         },
         rest: function (url, cbSuccess, cbFailure) {
@@ -21,7 +21,7 @@ define(function () {
                 if (cbFailure) {
                     cbFailure(error);
                 }
-                alert("Error calling server :: " + error);
+                console.log("Error calling server :: " + error);
             });
         },
         restCustomURL: function (url, cbSuccess, cbFailure) {
@@ -33,7 +33,7 @@ define(function () {
                 if (cbFailure) {
                     cbFailure(error);
                 }
-                alert("Error calling server :: " + error);
+                console.log("Error calling server :: " + error);
             });
         },
         post: function (objtype, fields, cbSuccess, cbFailure) {
@@ -45,7 +45,7 @@ define(function () {
                 if (cbFailure) {
                     cbFailure(error);
                 }
-                alert("Error calling server :: " + error);
+                console.log("Error calling server :: " + error);
             });
         },
         update: function (objtype, id, fields, cbSuccess, cbFailure) {
@@ -58,7 +58,7 @@ define(function () {
                 if (cbFailure) {
                     cbFailure(error);
                 }
-                alert("Error calling server :: " + error);
+                console.log("Error calling server :: " + error);
             });
         },
         insert: function (objtype, fields, cbSuccess, cbFailure) {
@@ -70,7 +70,7 @@ define(function () {
                 if (cbFailure) {
                     cbFailure(error);
                 }
-                alert("Error calling server :: " + error);
+                console.log("Error calling server :: " + error);
             });
         },
         downloadAWSFile: function (note, cbSuccess, cbFailure) {
@@ -82,7 +82,7 @@ define(function () {
                 if (cbFailure) {
                     cbFailure(error);
                 }
-                alert("Error calling server :: " + error);
+                console.log("Error calling server :: " + error);
             });
         }
     };

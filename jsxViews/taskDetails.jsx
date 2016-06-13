@@ -3,7 +3,7 @@ define(function (require) {
     var actions = require("util/actions");
     var Attestation = require("./attestation");
     var notes = require("util/serverData/getNotes");
-    var db = store.getDB();
+    var db = store.getNewDB();
     var Resource = React.createClass({
         getInitialState: function () {
             return {
@@ -39,11 +39,7 @@ define(function (require) {
         },
         query: function () {
             var that = this;
-            var params = [{
-                resourceid: this.props.data.id,
-                taskid: this.props.taskId
-            }];
-            db.getDataFromTable("resources", params, function (response) {
+            db.getResourcesByIdAndTaskId(this.props.data.id, this.props.taskId, function (response) {
                 if (response && response.length === 1) {
                     var isActive = response.item(0).status ? true : false;
                     that._onDBCallback(isActive);

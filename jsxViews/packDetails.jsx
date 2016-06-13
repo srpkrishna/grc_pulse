@@ -27,7 +27,7 @@ define(function (require) {
 
                         <div className="packContent" key={i} onClick={that.handleClick.bind(that, i)}>
                             <img className="policySymb" src={fileName}/>
-                            <div className="policyName">{content.Policy_Name__c}</div>
+                            <div className="policyName">{content.Name}</div>
                         </div>
                     );
                 });
