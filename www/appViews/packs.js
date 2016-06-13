@@ -3,13 +3,11 @@ define(function (require) {
     var store = require("util/store");
     var readMc;
     var unReadMc;
-
     var isEmpty = function (htmlElement) {
         return !$.trim(htmlElement.html())
-    }
+    };
 
     var packs = React.createClass({displayName: "packs",
-
         getInitialState: function () {
 
             return {
@@ -30,8 +28,8 @@ define(function (require) {
             var packs = this.state.packs;
             var pack = packs[this.state.value];
             var qParams = "pid=" + pack.Id;
-            qParams = qParams + "&" + "pname=" + pack.Name;
-            qParams = qParams + "&" + "pdesc=" + pack.Pack_Description__c;
+            qParams = qParams + "&" + "pname=" + (pack.Name ? pack.Name : "");
+            qParams = qParams + "&" + "pdesc=" + (pack.Pack_Description__c ? pack.Pack_Description__c : "");
 
             var goToUrl = "/packDetails?" + encodeURI(qParams);
             actions.changeUrl({
@@ -48,10 +46,9 @@ define(function (require) {
                 unReadMc.add(new Hammer.Tap({event: "singletap"}));
                 unReadMc.on("swipedown", this._onUnReadClick);
                 unReadMc.on("singletap", this._goToCardDetail);
-
                 unReadMc.on("dragleft dragright", function (ev) {
                     ev.gesture.preventDefault();
-                })
+                });
             }
 
             id = "packCard" + (this.state.value - 1);
@@ -138,7 +135,6 @@ define(function (require) {
                     continue;
                 }
                 var imgName = "logo.svg";
-
                 if ("ISMS" === pack.Name || "SOX" === pack.Name) {
                     imgName = encodeURI(pack.Name + " Pack Image.svg");
                 }

@@ -7,7 +7,7 @@ define(function (require) {
             handleClick: function (i) {
                 var policy = this.state.packContents[i];
                 var qParams = "pid=" + policy.Id;
-                qParams = qParams + "&" + "pname=" + policy.Policy_Name__c;
+                qParams = qParams + "&" + "pname=" + policy.Name;
                 qParams = qParams + "&" + "pdesc=" + policy.Policy_Description__c;
 
                 var goToUrl = "/policyDetails?" + encodeURI(qParams);
