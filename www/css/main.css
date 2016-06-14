@@ -734,7 +734,9 @@ div.taskContainer > div.task > .summary {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 0;
-    bottom: 2em;
+    bottom: 4em;
+    left: 0;
+    right: 0;
 }
 
 .exceptionDetailsContainer .titleContainer {
@@ -1523,13 +1525,15 @@ div.taskContainer > div.task > .summary {
 
 .messageTextArea {
     width: 94%;
-    height: 10em;
+    height: 80%;
     border: none;
     outline: none;
     font-size: 1em;
     font-family: latoWeb;
 }
-
+textarea {
+    resize: none;
+}
 .messageSend {
     float: right;
     display: flex;
@@ -1537,6 +1541,9 @@ div.taskContainer > div.task > .summary {
     height: 1em;
     line-height: 1em;
     font-size: 1.1em;
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
 .messageSend > div:first-child {

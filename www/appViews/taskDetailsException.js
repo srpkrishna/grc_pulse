@@ -68,11 +68,12 @@ define (function(require) {
             if (data.Activity_Task__c && approveLevels && (typeof approveLevels === "object")) {
                 var levelsNode = approveLevels.map(function (level, index) {
                     var status = "";
+                    var statusData = {name: (level.name ? level.name : "")};
                     if (level.status === "Approved") {
-                        status = getString("activity_task_approved", {name: level.name});
+                        status = getString("activity_task_approved", statusData);
                     }
                     else {
-                        status = getString("activity_task_pending", {name: level.name});
+                        status = getString("activity_task_pending", statusData);
                     }
                     return (
                         React.createElement("div", {key: index}, status)
@@ -90,7 +91,7 @@ define (function(require) {
                     )
                 );
             }
-            else {
+            else if (!data.Activity_Task__c) {
                 exceptionActions = (
                     React.createElement("div", {className: "approveDisapproveExceptionContainer", onClick: this._onClickApproveDisapprove}, 
                         React.createElement("div", {className: "taskDisapproved", "data-type": "Disapproved"}), 
