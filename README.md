@@ -105,11 +105,20 @@ access_token=00D61000000YvHe!AQUAQNAwKfHggEPQav8_mEr1GB_K0tAYfltSI4a4fzjVWFSl1CA
 &scope=id+api+web+full+chatter_api+visualforce+refresh_token+openid+custom_permissions+wave_api
 &token_type=Bearer"
 
-access_token: "00D61000000YvHe!AQUAQACXzmMn3wcFFDPsGEXC0XuW4e5aVOzFLrtP.6vf2ZAGp5D8Iy3qBjVfcvr7te3z4Yqw1Keyjvyz0pgS4PR4_lo.RGFi"
-id: "https://login.salesforce.com/id/00D61000000YvHeEAK/00561000000SoeLAAS"
-instance_url: "https://pulseapp-dev-ed.my.salesforce.com"
-issued_at: "1465198550245"
-refresh_token: "5Aep861tbt360sO1.s7vtGNETIEaon7XD_jEioOaE8O1z38zNKc2NHdMq2j6tBeZGF0GFw2K71ZSyFVfo1VycaE"
-scope: "id+api+web+full+chatter_api+visualforce+refresh_token+openid+custom_permissions+wave_api"
-signature: "2rfQzLDp1VFIkTx/UUyFbfkODTlbfz7QGERTxmNxW24"
-token_type: "Bearer"
+Code Signing Details for Android:
+Keystore password: grcpulse
+ 
+Alias: grc
+Alias password: grcpulse
+ 
+Validity: 100 years
+First Last name: MetricStream
+Organization unit: AEG
+Organization: MetricStream
+City / Locality: Bangalore
+State / Province: Karnataka
+Country Code: IN
+ 
+Ashish Intellij master password: 123
+ 
+Type: release
