@@ -1,6 +1,5 @@
 define(function (require) {
     var store = require("util/store");
-    var Header = require("./header");
     var Task = require("./task");
     var Packs = require("./packs");
     var PackDetails = require("./packDetails");

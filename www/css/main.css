@@ -134,18 +134,6 @@ body {
     border: 0;
 }
 
-.headerContainer {
-    height: 2em;
-    padding: 0.25em;
-}
-
-.headerContainer > div.appName {
-    text-align: center;
-    color: #ffffff;
-    font-weight: bold;
-    margin: 0.5em 0 0.5em 0;
-}
-
 .pageTitle {
     position: fixed;
     top: 0;

@@ -29,26 +29,35 @@ function getAuthorizeUrl() {
 }
 
 function onDeviceReady() {
-    var refresh_token = window.localStorage.getItem("refresh_token");
-    if (refresh_token) {
-        window.ms.grcPulse.forceClient = new forcetk.Client(clientId, loginUrl);
-        window.ms.grcPulse.forceClient.setRefreshToken(refresh_token);
-        window.ms.grcPulse.forceClient.refreshAccessToken(function (response) {
-            setSessionResponseData(response);
-        }, function () {
-            console.log("ERROR: refresh access token");
-        });
-    }
-    else {
-        ref = cordova.InAppBrowser.open (getAuthorizeUrl(), '_blank', 'location=no,clearcache=yes');
-        var eventName = device.platform === "Android" ? 'loadstop' : "loadstart";
-        ref.addEventListener(eventName, function(evt) {
-            if (evt.url.startsWith(redirectUri)) {
-                ref.close();
-                sessionCallback(decodeURIComponent(evt.url));
+    $("#loading").removeClass("hide");
+    require(["util/store"], function (store) {
+        var db = store.getNewDB();
+        db.getLoginInfo("refresh_token", function (refresh_token) {
+            if (refresh_token) {
+                refresh_token = sjcl.decrypt(device.uuid, JSON.parse(refresh_token));
+                window.ms.grcPulse.forceClient = new forcetk.Client(clientId, loginUrl);
+                window.ms.grcPulse.forceClient.setRefreshToken(refresh_token);
+                window.ms.grcPulse.forceClient.refreshAccessToken(function (response) {
+                    $("#loading").addClass("hide");
+                    setSessionResponseData(response);
+                }, function () {
+                    $("#loading").addClass("hide");
+                    console.log("ERROR: refresh access token");
+                });
+            }
+            else {
+                ref = cordova.InAppBrowser.open (getAuthorizeUrl(), '_blank', 'location=no,clearcache=yes');
+                var eventName = device.platform === "Android" ? 'loadstop' : "loadstart";
+                ref.addEventListener(eventName, function(evt) {
+                    if (evt.url.startsWith(redirectUri)) {
+                        $("#loading").addClass("hide");
+                        ref.close();
+                        sessionCallback(decodeURIComponent(evt.url));
+                    }
+                });
             }
         });
-    }
+    });
     handleEvents();
 }
 function sessionCallback(loc) {
@@ -71,17 +80,32 @@ function sessionCallback(loc) {
     }
 }
 function setSessionResponseData(response) {
-    var index  = response.id.lastIndexOf("/");
+    var index = response.id.lastIndexOf("/");
     window.ms.grcPulse.user = {userId: response.id.substring(index + 1, response.length)};
     window.ms.grcPulse.forceClient.setSessionToken(response.access_token, "v33.0", response.instance_url);
-    window.ms.grcPulse.forceClient.setRefreshToken(response.refresh_token);
-    for (var key in response) {
-        if(response.hasOwnProperty(key)){
-            window.localStorage.setItem(key, response[key]);
-        }
+    if (response.refresh_token) {
+        window.ms.grcPulse.forceClient.setRefreshToken(response.refresh_token);
     }
     mixpanel.track("App-Login-Success");
-    requirejs(["app/main", "util/notification"]);
+    requirejs(["app/main", "util/notification"], function () {
+        var loginInfo = {};
+        for (var key in response) {
+            if(response.hasOwnProperty(key)){
+                loginInfo[key] = JSON.stringify(sjcl.encrypt(device.uuid, response[key]));
+            }
+        }
+        var actions = require("util/actions");
+        if (loginInfo.refresh_token) {
+            actions.saveLoginInfo({
+                info: loginInfo
+            });
+        }
+        else {
+            actions.updateLoginInfo({
+                info: loginInfo
+            });
+        }
+    });
 }
 function handleEvents() {
     document.addEventListener("backbutton", function () {
@@ -90,7 +114,7 @@ function handleEvents() {
         });
     }, false);
 }
-requirejs(["util/config", "jquery-2.2.4.min", "react", "react-dom.min", "l20n.min", "flux.min"], function (CONFIG, jquery, react, reactDOM, l20n) {
+requirejs(["util/config", "jquery-2.2.4.min", "react", "react-dom.min", "l20n.min", "flux.min", "sjcl"], function (CONFIG, jquery, react, reactDOM, l20n) {
     requirejs(["forcetk.mobilesdk"], function () {
         window.React = react;
         window.ReactDOM = reactDOM;

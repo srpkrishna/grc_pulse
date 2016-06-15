@@ -118,6 +118,18 @@ define(function (require) {
                 actionType: constants.GET_CEO_MESSAGE_USER_IMAGE,
                 params: params
             });
+        },
+        saveLoginInfo: function (params) {
+            appDispatcher.dispatch({
+                actionType: constants.SAVE_LOGIN_INFO,
+                params: params
+            });
+        },
+        updateLoginInfo: function (params) {
+            appDispatcher.dispatch({
+                actionType: constants.UPDATE_LOGIN_INFO,
+                params: params
+            });
         }
     };
     return actions;

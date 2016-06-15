@@ -2,8 +2,9 @@
  * Created by asinha on 09/06/16.
  */
 define(function(require) {
-    //var db = window.sqlitePlugin.openDatabase({name: "GRCPulseDatabase.db", location: "default"});
-    var db = window.openDatabase("GRCPulseDatabase", "1.0", "GRCPulseDatabase Database", 5 * 1024 * 1024);
+    var db = window.sqlitePlugin.openDatabase({name: "GRCPulseDatabase.db", location: "default"});
+    //var db = window.openDatabase("GRCPulseDatabase", "1.0", "GRCPulseDatabase Database", 5 * 1024 * 1024);
+    
     db.transaction(function (t) {
         t.executeSql("CREATE TABLE IF NOT EXISTS tasks (taskid TEXT PRIMARY KEY, taskname TEXT, taskdepartment TEXT, taskpolicy TEXT)", [], function (t, results) {
 
@@ -28,6 +29,54 @@ define(function(require) {
     });
 
     var runDBTask = {
+        saveLoginInfo: function (info, callbackSuccess, callbackFailure) {
+            db.transaction(function (t) {
+                t.executeSql("INSERT INTO loginDetailsTable (access_token, id, instance_url, issued_at, refresh_token, scope, signature, token_type) VALUES (?,?,?,?,?,?,?,?)", [
+                    info.access_token, info.id, info.instance_url, info.issued_at, info.refresh_token, info.scope, info.signature, info.token_type
+                ], function () {
+                    if(callbackSuccess) {
+                        callbackSuccess();
+                    }
+                }, function () {
+                    if(callbackFailure) {
+                        callbackFailure();
+                    }
+                });
+            });
+        },
+        updateLoginInfo: function (info, callbackSuccess, callbackFailure) {
+            db.transaction(function (t) {
+                t.executeSql("UPDATE loginDetailsTable SET access_token=?, id=?, instance_url=?, issued_at=?, scope=?, signature=?, token_type=?)", [
+                    info.access_token, info.id, info.instance_url, info.issued_at, info.scope, info.signature, info.token_type
+                ], function () {
+                    if(callbackSuccess) {
+                        callbackSuccess();
+                    }
+                }, function () {
+                    if(callbackFailure) {
+                        callbackFailure();
+                    }
+                });
+            });
+        },
+        getLoginInfo: function (key, callbackSuccess, callbackFailure) {
+            db.transaction(function (t) {
+                t.executeSql("SElECT * from loginDetailsTable", [], function (t, results) {
+                    if(callbackSuccess) {
+                        if(results.rows.length) {
+                            callbackSuccess(results.rows.item(0)[key]);
+                        }
+                        else {
+                            callbackSuccess(null);
+                        }
+                    }
+                }, function (t, error) {
+                    if(callbackFailure) {
+                        callbackFailure();
+                    }
+                });
+            });
+        },
         insertTask: function (task, callbackSuccess, callbackFailure) {
             db.transaction(function (t) {
                 t.executeSql("INSERT INTO tasks (taskid, taskname, taskdepartment, taskpolicy) VALUES (?,?,?,?)", [

@@ -15,10 +15,12 @@ define(function () {
         REGISTER_DEVICE_REGISTRATION_ID: "registerDeviceRegistrationId",
         REQUEST_EXCEPTION: "requestException",
         TASK_IS_COMPLETE: "taskIsComplete",
+        SAVE_LOGIN_INFO: "saveLoginInfo",
         SEND_CEO_MESSAGE: "sendCEOMessage",
         SEND_INCIDENT_REPORTED: "sendIncidentReported",
         TASK_IS_COMPLETE_UPDATE_DB: "taskIsCompleteUpdateDB",
         USER_INFO_FETCH: "userInfoFetch",
-        USER_PROFILE_IMAGE: "userProfileImage"
+        USER_PROFILE_IMAGE: "userProfileImage",
+        UPDATE_LOGIN_INFO: "updateLoginInfo"
     };
 });

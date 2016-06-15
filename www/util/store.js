@@ -313,6 +313,16 @@ define(function (require) {
                     });
                 });
             }
+            case constants.SAVE_LOGIN_INFO:
+            {
+                dbNew.saveLoginInfo(action.params.info);
+                break;
+            }
+            case constants.UPDATE_LOGIN_INFO:
+            {
+                dbNew.updateLoginInfo(action.params.info);
+                break;
+            }
             default:
             {
                 //console.error("No Registered action");
