@@ -59,6 +59,19 @@ define(function(require) {
                 });
             });
         },
+        deleteLoginInfo: function (callbackSuccess, callbackFailure) {
+            db.transaction(function (t) {
+                t.executeSql("DELETE FROM loginDetailsTable", [], function () {
+                    if(callbackSuccess) {
+                        callbackSuccess();
+                    }
+                }, function () {
+                    if(callbackFailure) {
+                        callbackFailure();
+                    }
+                });
+            });
+        },
         getLoginInfo: function (key, callbackSuccess, callbackFailure) {
             db.transaction(function (t) {
                 t.executeSql("SElECT * from loginDetailsTable", [], function (t, results) {

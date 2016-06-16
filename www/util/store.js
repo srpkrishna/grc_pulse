@@ -272,12 +272,18 @@ define(function (require) {
             }
             case constants.LOGOUT:
             {
-                var logout = require("./serverData/logout");
-                logout(function (data) {
-                    window.localStorage.clear();
-                    window.location = "file:///android_asset/www/index.html";
-                }, function () {
+                dbNew.getLoginInfo("refresh_token", function (refresh_token) {
+                    var logout = require("./serverData/logout");
+                    refresh_token = sjcl.decrypt(device.uuid, JSON.parse(refresh_token));
+                    logout(refresh_token, function (data) {
+                        dbNew.deleteLoginInfo(function () {
+                            window.location = "file:///android_asset/www/index.html";
+                        }, function () {
+                            
+                        });
+                    }, function () {
 
+                    });
                 });
                 break;
             }
