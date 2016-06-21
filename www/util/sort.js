@@ -8,7 +8,7 @@ define(function (require) {
             do {
                 swapped = false;
                 for (var i = 0; i < resources.length - 1; i++) {
-                    if (resources[i].seqNo > resources[i + 1].seqNo) {
+                    if ((resources[i].props && resources[i].props.data.seqNo > resources[i + 1].props.data.seqNo) || (resources[i].seqNo > resources[i + 1].seqNo)) {
                         var temp = resources[i];
                         resources[i] = resources[i + 1];
                         resources[i + 1] = temp;

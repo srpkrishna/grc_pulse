@@ -124,30 +124,28 @@ define(function (require) {
 
     var TaskResourceList = React.createClass({displayName: "TaskResourceList",
         render: function () {
-            var resources = this.props.resources;
             var taskId = this.props.taskId;
             var counter = -1;
-            if (resources && resources.length > 1) {
-                resources = sort(resources);
+            var resources = this.props.resources;
+            var surveys = this.props.surveys;
+            var resourceObj = [];
+            for (var i = 0; i < resources.length; i++) {
+                var resource = resources[i];
+                resource.isSurvey = false;
+                resourceObj.push(resource);
             }
-            var resourceNodes = resources.map(function (resource) {
+            for (var j = 0; j < surveys.length; j++) {
+                var survey = surveys[j];
+                var questionData = {id: survey.id, name: survey.name, type: "q", isSurvey: true, seqNo: survey.seqNo};
+                resourceObj.push(questionData);
+            }
+            resourceObj = sort(resourceObj);
+            var resourceNodes = resourceObj.map(function (resource) {
                 counter++;
                 return (
-                    React.createElement(Resource, {data: resource, taskId: taskId, key: counter, counter: counter, isSurvey: false})
+                    React.createElement(Resource, {data: resource, taskId: taskId, key: counter, counter: counter, isSurvey: resource.isSurvey})
                 );
             });
-            if (this.props.surveys && this.props.surveys.length > 0) {
-                var surveys = this.props.surveys;
-                surveys = sort(surveys);
-                var surveyNode = surveys.map(function(survey){
-                    counter++;
-                    var questionData = {id: survey.id, name: survey.name, type: "q"};
-                    return (
-                        React.createElement(Resource, {data: questionData, taskId: taskId, key: counter, counter: counter, isSurvey: true})
-                    );
-                });
-                resourceNodes = resourceNodes.concat(surveyNode);
-            }
             return (
                 React.createElement("div", {className: "resourceContainer"}, 
                     resourceNodes
