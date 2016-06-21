@@ -4,6 +4,7 @@ define(function (require) {
     var Attestation = require("./attestation");
     var notes = require("util/serverData/getNotes");
     var db = store.getNewDB();
+    var sort = require("util/sort");
     var Resource = React.createClass({displayName: "Resource",
         getInitialState: function () {
             return {
@@ -126,6 +127,9 @@ define(function (require) {
             var resources = this.props.resources;
             var taskId = this.props.taskId;
             var counter = -1;
+            if (resources && resources.length > 1) {
+                resources = sort(resources);
+            }
             var resourceNodes = resources.map(function (resource) {
                 counter++;
                 return (
@@ -134,6 +138,7 @@ define(function (require) {
             });
             if (this.props.surveys && this.props.surveys.length > 0) {
                 var surveys = this.props.surveys;
+                surveys = sort(surveys);
                 var surveyNode = surveys.map(function(survey){
                     counter++;
                     var questionData = {id: survey.id, name: survey.name, type: "q"};

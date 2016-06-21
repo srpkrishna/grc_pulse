@@ -1,7 +1,7 @@
 define(function (require) {
     var store = require("util/store");
     var actions = require("util/actions");
-
+    var sort = require("util/sort");
     var Resource = React.createClass({displayName: "Resource",
         render: function () {
             var name = this.props.data.name, cssClass = "svgIcon document", fileName = "";
@@ -32,16 +32,20 @@ define(function (require) {
             );
         }
     });
-
+    
     var TaskResourceList = React.createClass({displayName: "TaskResourceList",
         render: function () {
             var resources = this.props.resources, surveys = this.props.surveys, counter = 0;
+            if (resources && resources.length > 1) {
+                resources = sort(resources);
+            }
             var resourceNodes = resources.map(function (resource) {
                 return (
                     React.createElement(Resource, {data: resource, key: counter++, isSurvey: false})
                 );
             });
             if (surveys && surveys.length > 0) {
+                surveys = sort(surveys);
                 var surveyNode = surveys.map (function (survey) {
                     return (
                         React.createElement(Resource, {data: survey, key: counter++, isSurvey: true})
