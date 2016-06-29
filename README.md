@@ -59,6 +59,7 @@
     org.apache.cordova.device 0.3.0 "Device"
     cordova plugin add cordova-plugin-dialogs
     cordova plugin add cordova-sqlite-storage
+    cordova plugin add cordova-plugin-network-information
     For Notification add following plugin
         To add them via the CLI:
             $ cordova plugin add org.apache.cordova.device

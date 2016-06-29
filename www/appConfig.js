@@ -23,12 +23,13 @@ if (!String.prototype.startsWith) {
     };
 }
 function getAuthorizeUrl() {
-    return loginUrl + 'services/oauth2/authorize?display=mobile'
+    return loginUrl + 'services/oauth2/authorize?display=touch'
         + '&response_type=token&client_id=' + encodeURIComponent(clientId)
         + '&redirect_uri=' + encodeURIComponent(redirectUri);
 }
 
 function onDeviceReady() {
+    
     $("#loading").removeClass("hide");
     require(["util/store"], function (store) {
         var db = store.getNewDB();
@@ -46,7 +47,7 @@ function onDeviceReady() {
                 });
             }
             else {
-                ref = cordova.InAppBrowser.open (getAuthorizeUrl(), '_blank', 'location=no,clearcache=yes');
+                ref = cordova.InAppBrowser.open (getAuthorizeUrl(), '_blank', 'location=no,clearcache=yes,zoom=no,toolbar=no');
                 var eventName = device.platform === "Android" ? 'loadstop' : "loadstart";
                 ref.addEventListener(eventName, function(evt) {
                     if (evt.url.startsWith(redirectUri)) {
