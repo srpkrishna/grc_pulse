@@ -2,7 +2,7 @@
  * Created by asinha on 09/06/16.
  */
 define(function(require) {
-    var db = window.sqlitePlugin.openDatabase({name: "GRCPulseDatabase.db", location: "default"});
+    var db = window.sqlitePlugin.openDatabase({name: "GRCPulseDatabase.db", location: 2, createFromLocation: 1});
     //var db = window.openDatabase("GRCPulseDatabase", "1.0", "GRCPulseDatabase Database", 5 * 1024 * 1024);
     
     db.transaction(function (t) {
