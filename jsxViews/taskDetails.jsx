@@ -12,8 +12,8 @@ define(function (require) {
                 isActive: false
             };
         },
-        openViewer: function () {
-            var qParams = "rid=" + this.props.data.id + "&" + "pid=" + this.props.taskId;
+        openViewer: function (rURL) {
+            var qParams = "rid=" + this.props.data.id + "&" + "pid=" + this.props.taskId + "&" + "rURL=" + (rURL ? rURL : "NA");
             var goToUrl = "/viewer?" + encodeURI(qParams);
             actions.changeUrl({
                 href: goToUrl
@@ -22,21 +22,38 @@ define(function (require) {
         },
         downloadResource: function () {
             var that = this;
-            notes.getNoteFromId(this.props.data.id,
-                function (data) {
-                    var note;
-
-                    if (data.records && data.totalSize > 0) {
-                        note = data.records[0];
-                    } else {
-                        note = {
-                            Id: that.props.data.id,
-                            Title: that.props.data.name
-                        }
-                    }
-                    store.getResource(note, that.openViewer);
+            notes.getNoteFromId(this.props.data.id, function (data) {
+                var note;
+                if (data.records && data.totalSize > 0) {
+                    note = data.records[0];
                 }
-            );
+                else {
+                    note = {
+                        Id: that.props.data.id,
+                        Title: that.props.data.name
+                    }
+                }
+                store.getResource(note, that.openViewer);
+            });
+        },
+        getFileURL: function () {
+            var that = this;
+            notes.getNoteFromId(this.props.data.id, function (data) {
+                var note;
+                if (data.records && data.totalSize > 0) {
+                    note = data.records[0];
+                }
+                else {
+                    note = {
+                        Id: that.props.data.id,
+                        Title: that.props.data.name
+                    }
+                }
+                var url = JSON.parse(note.Body).fileUrl;
+                var filename = encodeURIComponent(url.substring(url.lastIndexOf("/")+1, url.length));
+                var fileURL = url.substring(0, url.lastIndexOf("/")+1) + filename;
+                that.openViewer(url);
+            });
         },
         query: function () {
             var that = this;
@@ -64,7 +81,8 @@ define(function (require) {
                 $(event.target).parent().css("background-color", "LightGray");
                 var name = this.props.data.name;
                 if (name && (name.indexOf("pdf") > -1 || name.indexOf("mp4") > -1 )) {
-                    window.resolveLocalFileSystemURL(cordova.file.dataDirectory + "/" + this.props.data.id + "/" + name, this.openViewer, this.downloadResource);
+                    this.getFileURL();
+                    //window.resolveLocalFileSystemURL(cordova.file.dataDirectory + "/" + this.props.data.id + "/" + name, this.openViewer, this.downloadResource);
                 }
                 else {
                     alert(getString("error_contentType_notsupported"))
@@ -143,7 +161,8 @@ define(function (require) {
             var resourceNodes = resourceObj.map(function (resource) {
                 counter++;
                 return (
-                    <Resource data={resource} taskId={taskId} key={counter} counter={counter} isSurvey={resource.isSurvey}/>
+                    <Resource data={resource} taskId={taskId} key={counter} counter={counter}
+                              isSurvey={resource.isSurvey}/>
                 );
             });
             return (
@@ -153,14 +172,16 @@ define(function (require) {
             );
         }
     });
-    function formatEndDate (endDate) {
+
+    function formatEndDate(endDate) {
         var endDate = new Date(endDate);
         var daysLeft = "";
         if (endDate) {
             daysLeft = parseInt((endDate - Date.now()) / 86400000);
         }
-        return {daysLeft: daysLeft, text : daysLeft + "d"};
+        return {daysLeft: daysLeft, text: daysLeft + "d"};
     }
+
     var TaskDetails = React.createClass({
         componentDidMount: function () {
             mixpanel.track("App-On-TaskDetails-Loaded");
@@ -176,10 +197,11 @@ define(function (require) {
                             <img src={data.userProfileImageURL} className="messageSenderImage"/>
                         </div>
                         <div className="titleContainer textCenter">
-                            <div className="title">{getString("ceo_message_title", {userName: data.userInfo.Name})}</div>
+                            <div
+                                className="title">{getString("ceo_message_title", {userName: data.userInfo.Name})}</div>
                         </div>
                         <div className="summaryTaskDetails messageSummary">{data.Summary__c}</div>
-                        <Attestation taskId={taskId} isMessage="true" />
+                        <Attestation taskId={taskId} isMessage="true"/>
                     </div>
                 );
             }
@@ -193,8 +215,8 @@ define(function (require) {
                     surveys = $.parseJSON(surveys);
                 }
                 var endDateText = "", endDateCss = "endDate";
-                if(data.End_Date__c) {
-                    var endDateInfo = formatEndDate (data.End_Date__c);
+                if (data.End_Date__c) {
+                    var endDateInfo = formatEndDate(data.End_Date__c);
                     endDateText = endDateInfo.text;
                     endDateCss += (endDateInfo.daysLeft <= 0 ? " endDateAlert" : "");
                 }

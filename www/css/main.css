@@ -544,7 +544,27 @@ div.taskContainer > div.task > .summary {
 }
 
 .pdfScreen {
-    padding: 5%;
+    padding: 0.25em;
+    position: absolute;
+    bottom: 5em;
+    top: 1em;
+    left: 0;
+    right: 0;
+}
+.pdfScreen > div {
+    margin: auto !important;
+    width: 100%;
+    top: 50%;
+    z-index: 1;
+    position: inherit;
+    text-align: center;
+}
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none !important;
+    outline: none !important;
+    z-index: 2;
 }
 
 .icon {

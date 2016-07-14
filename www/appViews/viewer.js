@@ -2,7 +2,7 @@ define(function (require) {
     var store = require("util/store");
     var actions = require("util/actions");
     var Viewer = React.createClass({displayName: "Viewer",
-        getContent: function (resource) {
+        getContent: function (resource, rURL) {
             var url = cordova.file.dataDirectory + "/" + resource.id + "/" + resource.name;
             if (resource.name.indexOf('embed') > -1) {
                 return (
@@ -13,8 +13,9 @@ define(function (require) {
             }
             else if (resource.name.indexOf('mp4') > -1) {
                 var posterURL = "file:///android_asset/www/css/svg/video%20play.svg";
+                var videoUrl = rURL !== "NA" ? rURL : url;
                 return (
-                    React.createElement("video", {className: "videoScreen", src: url, controls: true, ref: "videoRef", poster: posterURL, onEnded: this._onVideoEnd, 
+                    React.createElement("video", {className: "videoScreen", src: videoUrl, controls: true, ref: "videoRef", poster: posterURL, onEnded: this._onVideoEnd, 
                            onPlay: this._onVideoPlay, onLoadedMetadata: this._onLoadedMetadata}, 
                         React.createElement("source", {src: url, type: 'mp4'}), 
                         "Your phone does not support the video."
@@ -30,12 +31,22 @@ define(function (require) {
                 );
             }
             else if (resource.name.indexOf('pdf') > -1) {
-                openViewer(url);
-                return (
-                    React.createElement("div", {className: "pdfScreen"}
-                    )
-                );
-
+                if (rURL !== "NA") {
+                    return (
+                        React.createElement("div", {className: "pdfScreen"}, 
+                            React.createElement("div", null, "Loading document..."), 
+                            React.createElement("iframe", {frameborder: "0", src: "http://docs.google.com/gview?embedded=true&url="+ rURL}
+                            )
+                        )
+                    );
+                }
+                else {
+                    openViewer(url);
+                    return (
+                        React.createElement("div", {className: "pdfScreen"}
+                        )
+                    );
+                }
             }
         },
         _onClick: function (event) {
@@ -87,6 +98,7 @@ define(function (require) {
         render: function () {
             var policyId = store.getParameterByName("pid");
             var resourceId = store.getParameterByName("rid");
+            var rURL = store.getParameterByName("rURL");
             var policy = store.getTaskDetails(policyId);
             var files = policy.Resources__c || [];
             var resource;
@@ -119,7 +131,7 @@ define(function (require) {
                     React.createElement("div", {className: "pageTitle"}, policy.Name), 
                     React.createElement("div", {className: "viewerTitle"}, fileName), 
                     React.createElement("div", {className: "viewer"}, 
-                        this.getContent(resource)
+                        this.getContent(resource, rURL)
                     ), 
                     React.createElement("div", {className: "attestationContainer", onClick: this._onClick}, 
                         React.createElement("div", {className: btCSS}, text)

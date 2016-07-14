@@ -2,7 +2,7 @@ define(function (require) {
     var store = require("util/store");
     var actions = require("util/actions");
     var Viewer = React.createClass({
-        getContent: function (resource) {
+        getContent: function (resource, rURL) {
             var url = cordova.file.dataDirectory + "/" + resource.id + "/" + resource.name;
             if (resource.name.indexOf('embed') > -1) {
                 return (
@@ -13,8 +13,9 @@ define(function (require) {
             }
             else if (resource.name.indexOf('mp4') > -1) {
                 var posterURL = "file:///android_asset/www/css/svg/video%20play.svg";
+                var videoUrl = rURL !== "NA" ? rURL : url;
                 return (
-                    <video className="videoScreen" src={url} controls ref="videoRef" poster={posterURL} onEnded={this._onVideoEnd}
+                    <video className="videoScreen" src={videoUrl} controls ref="videoRef" poster={posterURL} onEnded={this._onVideoEnd}
                            onPlay={this._onVideoPlay} onLoadedMetadata={this._onLoadedMetadata}>
                         <source src={url} type={'mp4'}/>
                         Your phone does not support the video.
@@ -30,12 +31,22 @@ define(function (require) {
                 );
             }
             else if (resource.name.indexOf('pdf') > -1) {
-                openViewer(url);
-                return (
-                    <div className="pdfScreen">
-                    </div>
-                );
-
+                if (rURL !== "NA") {
+                    return (
+                        <div className="pdfScreen">
+                            <div>Loading document...</div>
+                            <iframe frameborder="0" src={"http://docs.google.com/gview?embedded=true&url="+ rURL}>
+                            </iframe>
+                        </div>
+                    );
+                }
+                else {
+                    openViewer(url);
+                    return (
+                        <div className="pdfScreen">
+                        </div>
+                    );
+                }
             }
         },
         _onClick: function (event) {
@@ -87,6 +98,7 @@ define(function (require) {
         render: function () {
             var policyId = store.getParameterByName("pid");
             var resourceId = store.getParameterByName("rid");
+            var rURL = store.getParameterByName("rURL");
             var policy = store.getTaskDetails(policyId);
             var files = policy.Resources__c || [];
             var resource;
@@ -119,7 +131,7 @@ define(function (require) {
                     <div className="pageTitle">{policy.Name}</div>
                     <div className="viewerTitle">{fileName}</div>
                     <div className="viewer">
-                        {this.getContent(resource)}
+                        {this.getContent(resource, rURL)}
                     </div>
                     <div className="attestationContainer" onClick={this._onClick}>
                         <div className={btCSS}>{text}</div>
