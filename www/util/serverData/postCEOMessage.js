@@ -6,9 +6,9 @@ define(function (require) {
     var runTask = function (message, cbSuccess, cbFailure) {
         var fields = {
             Name: "Drip Message",
-            grcpulse_Message__c: message
+            grcpulse__Message__c: message
         };
-        Server.post("grcpulse_Public_Message__c", fields, cbSuccess, cbFailure);
+        Server.post("grcpulse__Public_Message__c", fields, cbSuccess, cbFailure);
     };
     return runTask;
 });

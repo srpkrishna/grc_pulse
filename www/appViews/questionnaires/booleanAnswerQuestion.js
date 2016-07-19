@@ -8,7 +8,7 @@ define(function (require) {
             return (
                 React.createElement("div", {className: "singleQuestionA", onClick: this._onClick}, 
                     React.createElement("div", {className: isSelected}), 
-                    React.createElement("div", null, this.props.answer.grcpulse_Text__c)
+                    React.createElement("div", null, this.props.answer.grcpulse__Text__c)
                 )
             );
         }
@@ -47,7 +47,7 @@ define(function (require) {
         render: function () {
             return (
                 React.createElement("div", {className: "questionContainer"}, 
-                    React.createElement("div", {className: "questionQ"}, this.props.questionnaire.grcpulse_Question__c), 
+                    React.createElement("div", {className: "questionQ"}, this.props.questionnaire.grcpulse__Question__c), 
                     React.createElement(AnswerList, {answers: this.props.questionnaire.Question_Options__r.records, onAnswerSelected: this._onAnswerSelected, 
                                 getSelectedAnswer: this.getSelectedAnswer})
                 )

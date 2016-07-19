@@ -123,7 +123,7 @@ define(function (require) {
             }
             var surveyName = "";
             var data = store.getTaskDetails(this.props.taskId);
-            var surveys = data.grcpulse_Survey_Details__c || [];
+            var surveys = data.grcpulse__Survey_Details__c || [];
             if (surveys && (typeof surveys === "string")) {
                 surveys = $.parseJSON(surveys);
                 for (var i = 0; i < surveys.length; i++) {

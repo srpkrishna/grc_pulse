@@ -62,7 +62,7 @@ define(function (require) {
             var img = this.state.userProfileURL ? this.state.userProfileURL : "file:///android_asset/www/css/img/user-default-image.png";
             var name = userInfo ? userInfo.Name : "";
             var taskInfo = this.state.taskCount + (this.state.taskCount > 1 ? getString("tasks_pending") : getString("task_pending"));
-            var message = (userInfo && userInfo.grcpulse_CanSendPublicMessage__c ? (
+            var message = (userInfo && userInfo.grcpulse__CanSendPublicMessage__c ? (
                 React.createElement("div", {className: "sendMessageBt", onClick: this._onMessage}, 
                     React.createElement("div", null, 
                         React.createElement("div", null), 

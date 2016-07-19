@@ -34,7 +34,7 @@ define(function (require) {
         render: function () {
             return (
                 React.createElement("div", {className: "questionContainer"}, 
-                    React.createElement("div", {className: "questionQ"}, this.props.questionnaire.grcpulse_Question__c), 
+                    React.createElement("div", {className: "questionQ"}, this.props.questionnaire.grcpulse__Question__c), 
                     React.createElement(DateAnswer, {onAnswerEntered: this._onAnswerEntered, 
                                 getSelectedAnswer: this.getSelectedAnswer})
                 )

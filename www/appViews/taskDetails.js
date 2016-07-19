@@ -189,7 +189,7 @@ define(function (require) {
         render: function () {
             var taskId = this.props.taskId;
             var data = store.getTaskDetails(this.props.taskId);
-            if (data.grcpulse_Type__c === "Public Message") {
+            if (data.grcpulse__Type__c === "Public Message") {
                 return (
                     React.createElement("div", {className: "taskDetailsContainer yellowBackground"}, 
                         React.createElement("div", {className: "pageTitle"}, getString("task_details")), 
@@ -200,23 +200,23 @@ define(function (require) {
                             React.createElement("div", {
                                 className: "title"}, getString("ceo_message_title", {userName: data.userInfo.Name}))
                         ), 
-                        React.createElement("div", {className: "summaryTaskDetails messageSummary"}, data.grcpulse_Summary__c), 
+                        React.createElement("div", {className: "summaryTaskDetails messageSummary"}, data.grcpulse__Summary__c), 
                         React.createElement(Attestation, {taskId: taskId, isMessage: "true"})
                     )
                 );
             }
             else {
-                var files = data.grcpulse_Resources__c || [];
+                var files = data.grcpulse__Resources__c || [];
                 if (files && (typeof files === "string")) {
                     files = $.parseJSON(files);
                 }
-                var surveys = data.grcpulse_Survey_Details__c || [];
+                var surveys = data.grcpulse__Survey_Details__c || [];
                 if (surveys && (typeof surveys === "string")) {
                     surveys = $.parseJSON(surveys);
                 }
                 var endDateText = "", endDateCss = "endDate";
-                if (data.grcpulse_End_Date__c) {
-                    var endDateInfo = formatEndDate(data.grcpulse_End_Date__c);
+                if (data.grcpulse__End_Date__c) {
+                    var endDateInfo = formatEndDate(data.grcpulse__End_Date__c);
                     endDateText = endDateInfo.text;
                     endDateCss += (endDateInfo.daysLeft <= 0 ? " endDateAlert" : "");
                 }
@@ -235,9 +235,9 @@ define(function (require) {
                             React.createElement("div", {className: endDateCss}, endDateText)
                         ), 
                         React.createElement("div", {className: "deptTaskDetail"}, 
-                            data.grcpulse_Department__c
+                            data.grcpulse__Department__c
                         ), 
-                        React.createElement("div", {className: "summaryTaskDetails"}, data.grcpulse_Summary__c), 
+                        React.createElement("div", {className: "summaryTaskDetails"}, data.grcpulse__Summary__c), 
                         React.createElement(TaskResourceList, {resources: files, taskId: taskId, surveys: surveys}), 
                         React.createElement(Attestation, {taskId: taskId})
                     )

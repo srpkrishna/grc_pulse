@@ -29,7 +29,7 @@ define(function (require) {
             var pack = packs[this.state.value];
             var qParams = "pid=" + pack.Id;
             qParams = qParams + "&" + "pname=" + (pack.Name ? pack.Name : "");
-            qParams = qParams + "&" + "pdesc=" + (pack.grcpulse_Pack_Description__c ? pack.grcpulse_Pack_Description__c : "");
+            qParams = qParams + "&" + "pdesc=" + (pack.grcpulse__Pack_Description__c ? pack.grcpulse__Pack_Description__c : "");
 
             var goToUrl = "/packDetails?" + encodeURI(qParams);
             actions.changeUrl({
@@ -142,7 +142,7 @@ define(function (require) {
                 obj.push(
                     <div className={cssName} key={i} id={"packCard"+i}>
                         <div className="packName">{pack.Name}</div>
-                        <div className="packSubName">{pack.grcpulse_Pack_Description__c ? pack.grcpulse_Pack_Description__c : ""}</div>
+                        <div className="packSubName">{pack.grcpulse__Pack_Description__c ? pack.grcpulse__Pack_Description__c : ""}</div>
                         <img className="packImg" src={fileName}></img>
                     </div>
                 );

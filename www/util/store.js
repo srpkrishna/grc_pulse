@@ -72,18 +72,18 @@ define(function (require) {
                         var taskObj = {
                             taskid: task.Id,
                             taskname: task.Name,
-                            taskdepartment: task.grcpulse_Department__c,
-                            taskpolicy: task.grcpulse_Policy__c
+                            taskdepartment: task.grcpulse__Department__c,
+                            taskpolicy: task.grcpulse__Policy__c
                         };
                         dbNew.insertTask(taskObj);
                         var resources = null;
-                        var resourceString = task.grcpulse_Resources__c || [];
+                        var resourceString = task.grcpulse__Resources__c || [];
                         if (resourceString && (typeof resourceString === "string")) {
                             resources = JSON.parse(resourceString);
                             insertResource(taskObj.taskid, "r", resources);
                         }
                         var surveys = null;
-                        var surveysString = task.grcpulse_Survey_Details__c || [];
+                        var surveysString = task.grcpulse__Survey_Details__c || [];
                         if (surveysString && (typeof surveysString === "string")) {
                             surveys = JSON.parse(surveysString);
                             insertResource(taskObj.taskid, "q", surveys);
@@ -197,10 +197,10 @@ define(function (require) {
                 var requestException = require("./serverData/requestException");
                 requestException(action.params, function (data) {
                     userExceptions.push({
-                        grcpulse_BU_Head__c: null,
-                        grcpulse_Exception_Status__c: "Approval Pending",
-                        grcpulse_Exception__c: action.params.exceptionId,
-                        grcpulse_Manager__c: ""
+                        grcpulse__BU_Head__c: null,
+                        grcpulse__Exception_Status__c: "Approval Pending",
+                        grcpulse__Exception__c: action.params.exceptionId,
+                        grcpulse__Manager__c: ""
                     });
                     data.expId = action.params.exceptionId;
                     store.emitExceptionRequestSend(data);
@@ -262,10 +262,10 @@ define(function (require) {
             {
                 var getExceptionComment = require("./serverData/getExceptionComment");
                 getExceptionComment(action.params.requestedExceptionId, function (data) {
-                    var comment = data.records && data.records.length ? data.records[0].grcpulse_Comment__c : "No reason provided";
-                    var status = data.records && data.records.length ? data.records[0].grcpulse_Exception_Approver_Level__c : "NA";
-                    store.getTaskDetails(action.params.taskId).grcpulse_Comment__c = comment;
-                    store.getTaskDetails(action.params.taskId).grcpulse_Exception_Approver_Level__c = status;
+                    var comment = data.records && data.records.length ? data.records[0].grcpulse__Comment__c : "No reason provided";
+                    var status = data.records && data.records.length ? data.records[0].grcpulse__Exception_Approver_Level__c : "NA";
+                    store.getTaskDetails(action.params.taskId).grcpulse__Comment__c = comment;
+                    store.getTaskDetails(action.params.taskId).grcpulse__Exception_Approver_Level__c = status;
                     store.emitExceptionCommentAvailable();
                 });
                 break;
@@ -525,9 +525,9 @@ define(function (require) {
         isThisUserExceptionActive: function (exceptionId) {
             var flag = {isActive: true, status: ""};
             for (var i = 0; i < userExceptions.length; i++) {
-                if ((exceptionId === userExceptions[i].grcpulse_Exception__c) && ("inActive" !== userExceptions[i].grcpulse_Exception_Status__c)) {
+                if ((exceptionId === userExceptions[i].grcpulse__Exception__c) && ("inActive" !== userExceptions[i].grcpulse__Exception_Status__c)) {
                     flag.isActive = false;
-                    flag.status = userExceptions[i].grcpulse_Exception_Status__c;
+                    flag.status = userExceptions[i].grcpulse__Exception_Status__c;
                     break;
                 }
             }
