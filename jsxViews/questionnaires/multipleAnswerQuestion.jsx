@@ -8,7 +8,7 @@ define(function (require) {
             return (
                 <div className="singleQuestionA" onClick={this._onClick}>
                     <div className={isSelected}></div>
-                    <div>{this.props.answer.Text__c}</div>
+                    <div>{this.props.answer.grcpulse_Text__c}</div>
                 </div>
             );
         }
@@ -62,7 +62,7 @@ define(function (require) {
         render: function () {
             return (
                 <div className="questionContainer">
-                    <div className="questionQ">{this.props.questionnaire.Question__c}</div>
+                    <div className="questionQ">{this.props.questionnaire.grcpulse_Question__c}</div>
                     <AnswerList answers={this.props.questionnaire.Question_Options__r.records} onAnswerSelected={this._onAnswerSelected}
                                 isSelectedAnswer={this.isSelectedAnswer}/>
                 </div>

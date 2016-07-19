@@ -41,7 +41,7 @@ define (function(require) {
             var that = this;
             var setTimeOutId = setTimeout(function () {
                 actions.getExceptionComments ({
-                    requestedExceptionId: that.state.data.Requested_Exception__c,
+                    requestedExceptionId: that.state.data.grcpulse_Requested_Exception__c,
                     taskId: that.props.taskId
                 });
                 clearTimeout(setTimeOutId);
@@ -56,7 +56,7 @@ define (function(require) {
         render: function () {
             var data = this.state.data;
             var approveNode = null, exceptionActions;
-            var approveLevels = data.Exception_Approver_Level__c;
+            var approveLevels = data.grcpulse_Exception_Approver_Level__c;
             if (approveLevels && (typeof approveLevels === "string")) {
                 try {
                     approveLevels = $.parseJSON(approveLevels);
@@ -65,7 +65,7 @@ define (function(require) {
                     console.log("ERROR: " + e);
                 }
             }
-            if (data.Activity_Task__c && approveLevels && (typeof approveLevels === "object")) {
+            if (data.grcpulse_Activity_Task__c && approveLevels && (typeof approveLevels === "object")) {
                 var levelsNode = approveLevels.map(function (level, index) {
                     var status = "";
                     var statusData = {name: (level.name ? level.name : "")};
@@ -91,7 +91,7 @@ define (function(require) {
                     )
                 );
             }
-            else if (!data.Activity_Task__c) {
+            else if (!data.grcpulse_Activity_Task__c) {
                 exceptionActions = (
                     React.createElement("div", {className: "approveDisapproveExceptionContainer", onClick: this._onClickApproveDisapprove}, 
                         React.createElement("div", {className: "taskDisapproved", "data-type": "Disapproved"}), 
@@ -111,10 +111,10 @@ define (function(require) {
                         React.createElement("div", {className: "titleContainer"}, 
                             React.createElement("div", {className: "title"}, data.Name)
                         ), 
-                        React.createElement("div", {className: "summaryTaskDetails"}, data.Summary__c), 
+                        React.createElement("div", {className: "summaryTaskDetails"}, data.grcpulse_Summary__c), 
                         React.createElement("div", {className: "exceptionComment"}, 
                             React.createElement("div", null), 
-                            React.createElement("div", null, data.Comment__c)
+                            React.createElement("div", null, data.grcpulse_Comment__c)
                         ), 
                         approveNode, 
                         exceptionActions

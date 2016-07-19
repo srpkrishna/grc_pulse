@@ -55,10 +55,10 @@ define(function (require) {
         },
         render: function () {
             var packName = this.props.data.Policy__r.Pack__r ? this.props.data.Policy__r.Pack__r.Name : "";
-            var dept = this.props.data.IT_Team_Name__c || "";
+            var dept = this.props.data.grcpulse_IT_Team_Name__c || "";
             var userExceptionStatus = store.isThisUserExceptionActive(this.props.data.Id);
             this.isActive = userExceptionStatus.isActive;
-            this.isActive = (this.props.data.Concurrent_Request_Allowed__c ? this.props.data.Concurrent_Request_Allowed__c : this.isActive);
+            this.isActive = (this.props.data.grcpulse_Concurrent_Request_Allowed__c ? this.props.data.grcpulse_Concurrent_Request_Allowed__c : this.isActive);
             var status = this.isActive ? (this.isCommentFieldVisible ? "submit" : "request") : userExceptionStatus.status;
             var requestButtonCSS = this.isActive ? "requestBtActive" : "requestBtInActive";
             var commentFieldCss = "exceptionCommentContainer" + (this.isCommentFieldVisible ? "" : " visibilityNone");

@@ -189,7 +189,7 @@ define(function (require) {
         render: function () {
             var taskId = this.props.taskId;
             var data = store.getTaskDetails(this.props.taskId);
-            if (data.Type__c === "Public Message") {
+            if (data.grcpulse_Type__c === "Public Message") {
                 return (
                     <div className="taskDetailsContainer yellowBackground">
                         <div className="pageTitle">{getString("task_details")}</div>
@@ -200,23 +200,23 @@ define(function (require) {
                             <div
                                 className="title">{getString("ceo_message_title", {userName: data.userInfo.Name})}</div>
                         </div>
-                        <div className="summaryTaskDetails messageSummary">{data.Summary__c}</div>
+                        <div className="summaryTaskDetails messageSummary">{data.grcpulse_Summary__c}</div>
                         <Attestation taskId={taskId} isMessage="true"/>
                     </div>
                 );
             }
             else {
-                var files = data.Resources__c || [];
+                var files = data.grcpulse_Resources__c || [];
                 if (files && (typeof files === "string")) {
                     files = $.parseJSON(files);
                 }
-                var surveys = data.Survey_Details__c || [];
+                var surveys = data.grcpulse_Survey_Details__c || [];
                 if (surveys && (typeof surveys === "string")) {
                     surveys = $.parseJSON(surveys);
                 }
                 var endDateText = "", endDateCss = "endDate";
-                if (data.End_Date__c) {
-                    var endDateInfo = formatEndDate(data.End_Date__c);
+                if (data.grcpulse_End_Date__c) {
+                    var endDateInfo = formatEndDate(data.grcpulse_End_Date__c);
                     endDateText = endDateInfo.text;
                     endDateCss += (endDateInfo.daysLeft <= 0 ? " endDateAlert" : "");
                 }
@@ -235,9 +235,9 @@ define(function (require) {
                             <div className={endDateCss}>{endDateText}</div>
                         </div>
                         <div className="deptTaskDetail">
-                            {data.Department__c}
+                            {data.grcpulse_Department__c}
                         </div>
-                        <div className="summaryTaskDetails">{data.Summary__c}</div>
+                        <div className="summaryTaskDetails">{data.grcpulse_Summary__c}</div>
                         <TaskResourceList resources={files} taskId={taskId} surveys={surveys}/>
                         <Attestation taskId={taskId}/>
                     </div>

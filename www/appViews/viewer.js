@@ -100,7 +100,7 @@ define(function (require) {
             var resourceId = store.getParameterByName("rid");
             var rURL = store.getParameterByName("rURL");
             var policy = store.getTaskDetails(policyId);
-            var files = policy.Resources__c || [];
+            var files = policy.grcpulse_Resources__c || [];
             var resource;
             if (files && (typeof files === "string")) {
                 files = $.parseJSON(files);

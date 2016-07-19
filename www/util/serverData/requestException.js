@@ -5,11 +5,11 @@ define(function (require) {
     var Server = require("./callServer");
     var runTask = function (data, callback) {
         var fields = {
-            Comment__c: data.comment,
-            Requested_By__c: window.ms.grcPulse.user.userId,
-            Exception__c: data.exceptionId
+            grcpulse_Comment__c: data.comment,
+            grcpulse_Requested_By__c: window.ms.grcPulse.user.userId,
+            grcpulse_Exception__c: data.exceptionId
         };
-        Server.insert("Requested_Exception__c", fields, callback);
+        Server.insert("grcpulse_Requested_Exception__c", fields, callback);
     };
     return runTask;
 });

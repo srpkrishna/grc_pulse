@@ -34,7 +34,7 @@ define(function (require) {
         },
         getContent: function (questionnaire) {
             //noinspection JSUnresolvedVariable
-            switch (questionnaire.Type__c) {
+            switch (questionnaire.grcpulse_Type__c) {
                 case questionType.SINGLE_ANSWER:
                 {
                     return (

@@ -8,7 +8,7 @@ define(function (require) {
                 var policy = this.state.packContents[i];
                 var qParams = "pid=" + policy.Id;
                 qParams = qParams + "&" + "pname=" + policy.Name;
-                qParams = qParams + "&" + "pdesc=" + policy.Policy_Description__c;
+                qParams = qParams + "&" + "pdesc=" + policy.grcpulse_Policy_Description__c;
 
                 var goToUrl = "/policyDetails?" + encodeURI(qParams);
                 actions.changeUrl({

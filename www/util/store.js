@@ -72,18 +72,18 @@ define(function (require) {
                         var taskObj = {
                             taskid: task.Id,
                             taskname: task.Name,
-                            taskdepartment: task.Department__c,
-                            taskpolicy: task.Policy__c
+                            taskdepartment: task.grcpulse_Department__c,
+                            taskpolicy: task.grcpulse_Policy__c
                         };
                         dbNew.insertTask(taskObj);
                         var resources = null;
-                        var resourceString = task.Resources__c || [];
+                        var resourceString = task.grcpulse_Resources__c || [];
                         if (resourceString && (typeof resourceString === "string")) {
                             resources = JSON.parse(resourceString);
                             insertResource(taskObj.taskid, "r", resources);
                         }
                         var surveys = null;
-                        var surveysString = task.Survey_Details__c || [];
+                        var surveysString = task.grcpulse_Survey_Details__c || [];
                         if (surveysString && (typeof surveysString === "string")) {
                             surveys = JSON.parse(surveysString);
                             insertResource(taskObj.taskid, "q", surveys);
@@ -197,10 +197,10 @@ define(function (require) {
                 var requestException = require("./serverData/requestException");
                 requestException(action.params, function (data) {
                     userExceptions.push({
-                        BU_Head__c: null,
-                        Exception_Status__c: "Approval Pending",
-                        Exception__c: action.params.exceptionId,
-                        Manager__c: ""
+                        grcpulse_BU_Head__c: null,
+                        grcpulse_Exception_Status__c: "Approval Pending",
+                        grcpulse_Exception__c: action.params.exceptionId,
+                        grcpulse_Manager__c: ""
                     });
                     data.expId = action.params.exceptionId;
                     store.emitExceptionRequestSend(data);
@@ -262,10 +262,10 @@ define(function (require) {
             {
                 var getExceptionComment = require("./serverData/getExceptionComment");
                 getExceptionComment(action.params.requestedExceptionId, function (data) {
-                    var comment = data.records && data.records.length ? data.records[0].Comment__c : "No reason provided";
-                    var status = data.records && data.records.length ? data.records[0].Exception_Approver_Level__c : "NA";
-                    store.getTaskDetails(action.params.taskId).Comment__c = comment;
-                    store.getTaskDetails(action.params.taskId).Exception_Approver_Level__c = status;
+                    var comment = data.records && data.records.length ? data.records[0].grcpulse_Comment__c : "No reason provided";
+                    var status = data.records && data.records.length ? data.records[0].grcpulse_Exception_Approver_Level__c : "NA";
+                    store.getTaskDetails(action.params.taskId).grcpulse_Comment__c = comment;
+                    store.getTaskDetails(action.params.taskId).grcpulse_Exception_Approver_Level__c = status;
                     store.emitExceptionCommentAvailable();
                 });
                 break;
@@ -279,7 +279,7 @@ define(function (require) {
                         dbNew.deleteLoginInfo(function () {
                             window.location = "file:///android_asset/www/index.html";
                         }, function () {
-                            
+
                         });
                     }, function () {
 
@@ -294,7 +294,7 @@ define(function (require) {
                     ceoMessage = "";
                     store.emitCEOMessageSend();
                 }, function () {
-                    
+
                 });
                 break;
             }
@@ -525,9 +525,9 @@ define(function (require) {
         isThisUserExceptionActive: function (exceptionId) {
             var flag = {isActive: true, status: ""};
             for (var i = 0; i < userExceptions.length; i++) {
-                if ((exceptionId === userExceptions[i].Exception__c) && ("inActive" !== userExceptions[i].Exception_Status__c)) {
+                if ((exceptionId === userExceptions[i].grcpulse_Exception__c) && ("inActive" !== userExceptions[i].grcpulse_Exception_Status__c)) {
                     flag.isActive = false;
-                    flag.status = userExceptions[i].Exception_Status__c;
+                    flag.status = userExceptions[i].grcpulse_Exception_Status__c;
                     break;
                 }
             }
