@@ -258,7 +258,7 @@ div.taskContainer > div.task > .summary {
 .taskResources .resourceTitle {
     display: inline;
     max-width: 85% !important;
-    height: 1em;
+    height: 1.1em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

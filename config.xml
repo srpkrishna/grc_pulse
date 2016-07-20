@@ -57,5 +57,6 @@
         <icon src="res/ios/icon-60@3x.png" width="180" height="180" />
         <icon src="res/ios/icon-small.png" width="29" height="29" />
         <icon src="res/ios/icon-small@2x.png" width="58" height="58" />
+        <splash src="res/ios/splash/splash@3x.png" width="2250" height="4002"/>
     </platform>
 </widget>

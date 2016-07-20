@@ -4,11 +4,12 @@ define(function (require) {
     var Splash = React.createClass({displayName: "Splash",
         componentDidMount: function () {
             store.addTaskChangeListener(this._onTaskChange);
-            setTimeout(function () {
+            var setTimeoutId = setTimeout(function () {
                 actions.checkTask({
                     taskTypes: "All",
                     emitEvent: true
                 });
+                clearTimeout(setTimeoutId);
             }, 0);
             mixpanel.track("App-Splash-Loaded");
         },

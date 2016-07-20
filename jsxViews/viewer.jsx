@@ -4,25 +4,30 @@ define(function (require) {
     var Viewer = React.createClass({
         getContent: function (resource, rURL) {
             var url = cordova.file.dataDirectory + "/" + resource.id + "/" + resource.name;
-            if (resource.name.indexOf('embed') > -1) {
+            if (resource && resource.name.indexOf('embed') > -1) {
                 return (
                     <iframe className="videoScreen"
                             src="http://www.youtube.com/embed/MaAngDmdgj0" autoplay="1" frameborder="0">
                     </iframe>
                 );
             }
-            else if (resource.name.indexOf('mp4') > -1) {
+            else if (resource && resource.name.indexOf('mp4') > -1) {
                 var posterURL = "file:///android_asset/www/css/svg/video%20play.svg";
                 var videoUrl = rURL !== "NA" ? rURL : url;
                 return (
-                    <video className="videoScreen" src={videoUrl} controls ref="videoRef" poster={posterURL} onEnded={this._onVideoEnd}
-                           onPlay={this._onVideoPlay} onLoadedMetadata={this._onLoadedMetadata}>
+                    <video className="videoScreen" src={videoUrl} controls ref="videoRef" poster={posterURL}
+                           onEnded={this._onVideoEnd}
+                           onPlay={this._onVideoPlay}
+                           onLoadedMetadata={this._onLoadedMetadata}
+                           onLoadedData={this._onLoadedData}
+                           onProgress={this._onProgress}
+                           onLoadStart={this._onLoadStart}>
                         <source src={url} type={'mp4'}/>
                         Your phone does not support the video.
                     </video>
                 );
             }
-            else if (resource.name.indexOf('audio') > -1) {
+            else if (resource && resource.name.indexOf('audio') > -1) {
                 return (
                     <audio controls ref="audioRef">
                         <source src={url} type={'mp4'}/>
@@ -30,11 +35,10 @@ define(function (require) {
                     </audio>
                 );
             }
-            else if (resource.name.indexOf('pdf') > -1) {
+            else if (resource && resource.name.indexOf('pdf') > -1) {
                 if (rURL !== "NA") {
                     return (
                         <div className="pdfScreen">
-                            <div>Loading document...</div>
                             <iframe frameborder="0" src={"http://docs.google.com/gview?embedded=true&url="+ rURL}>
                             </iframe>
                         </div>
@@ -86,16 +90,24 @@ define(function (require) {
                 isResourceAttested: true
             });
         },
+        _onProgress: function () {
+            console.log("_onProgress");
+        },
+        _onLoadedData: function (event) {
+            console.log("_onLoadedData");
+        },
+        _onLoadStart: function (event) {
+            console.log("_onLoadStart");
+        },
         _onVideoPlay: function (event) {
-            //console.log("On Video Playing");
+            console.log("_onVideoPlay");
         },
         _onLoadedMetadata: function (event) {
-            var ref = this.refs["videoRef"];
-            event.target.onwebkitfullscreenchange = function(ev) {
-                //console.log("FULL SCREEN");
-            };
+            //var ref = this.refs["videoRef"];
+            console.log("_onLoadedMetadata");
         },
         render: function () {
+            console.log("VIEWER RENDER");
             var policyId = store.getParameterByName("pid");
             var resourceId = store.getParameterByName("rid");
             var rURL = store.getParameterByName("rURL");

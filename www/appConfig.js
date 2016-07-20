@@ -29,7 +29,6 @@ function getAuthorizeUrl() {
 }
 
 function onDeviceReady() {
-    
     $("#loading").removeClass("hide");
     require(["util/store"], function (store) {
         var db = store.getNewDB();
