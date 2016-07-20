@@ -15,7 +15,7 @@ define (function (require){
                 case questionType.SINGLE_ANSWER:
                 {
                     //noinspection JSUnresolvedVariable
-                    var options = questionnaire.Question_Options__r.records;
+                    var options = questionnaire.grcpulse__Question_Options__r.records;
                     for (var i = 0; i < options.length; i++) {
                         if (userAnswer === options[i].Id) {
                             score = options[i].grcpulse__Score__c * weightage;
@@ -27,7 +27,7 @@ define (function (require){
                 case questionType.MULTIPLE_ANSWER:
                 {
                     //noinspection JSUnresolvedVariable
-                    var options = questionnaire.Question_Options__r.records;
+                    var options = questionnaire.grcpulse__Question_Options__r.records;
                     for (var i = 0; i < options.length; i++) {
                         for (var j = 0; j < userAnswer.length; j++) {
                             if (userAnswer[j] === options[i].Id) {
@@ -41,7 +41,7 @@ define (function (require){
                 case questionType.BOOLEAN_ANSWER:
                 {
                     //noinspection JSUnresolvedVariable
-                    var options = questionnaire.Question_Options__r.records;
+                    var options = questionnaire.grcpulse__Question_Options__r.records;
                     for (var i = 0; i < options.length; i++) {
                         if (userAnswer === options[i].Id) {
                             score = options[i].grcpulse__Score__c * weightage;

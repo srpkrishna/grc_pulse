@@ -48,7 +48,7 @@ define(function (require) {
             return (
                 <div className="questionContainer">
                     <div className="questionQ">{this.props.questionnaire.grcpulse__Question__c}</div>
-                    <AnswerList answers={this.props.questionnaire.Question_Options__r.records} onAnswerSelected={this._onAnswerSelected}
+                    <AnswerList answers={this.props.questionnaire.grcpulse__Question_Options__r.records} onAnswerSelected={this._onAnswerSelected}
                                 getSelectedAnswer={this.getSelectedAnswer}/>
                 </div>
             );
