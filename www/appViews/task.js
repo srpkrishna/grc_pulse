@@ -143,7 +143,6 @@ define(function (require) {
                 if (surveys && (typeof surveys === "string")) {
                     surveys = $.parseJSON(surveys)
                 }
-                this.state.data.packName = "ISMS";
                 var endDateText = "", endDateCss = "endDate";
                 if(this.state.data.grcpulse__End_Date__c) {
                     var endDateInfo = formatEndDate (this.state.data.grcpulse__End_Date__c);
@@ -161,11 +160,6 @@ define(function (require) {
                         ), 
                         React.createElement("div", {className: "summary"}, 
                             this.state.data.grcpulse__Summary__c
-                        ), 
-                        React.createElement("div", {className: "packContainerInTaskList"}, 
-                            React.createElement("div", {className: "packNameInTaskList"}, 
-                                this.state.data.packName
-                            )
                         ), 
                         React.createElement("div", {className: "resourceList"}, 
                             React.createElement(TaskResourceList, {resources: files, surveys: surveys})
