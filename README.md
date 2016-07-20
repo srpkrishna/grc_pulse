@@ -54,6 +54,7 @@
     cordova-plugin-file (cordova plugin add cordova-plugin-file)
     cordova-plugin-file-transfer (cordova plugin add cordova-plugin-file-transfer)
     cordova-plugin-whitelist
+    cordova-plugin-inappbrowser
     de.sitewaerts.cordova.documentviewer
       (third pirty code is located in plugins folder- for this to work you need cordova-plugin-file,cordova-plugin-file-transfer)
     org.apache.cordova.device 0.3.0 "Device"

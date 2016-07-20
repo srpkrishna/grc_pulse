@@ -34,7 +34,7 @@ define(function (require) {
         render: function () {
             return (
                 <div className="questionContainer">
-                    <div className="questionQ">{this.props.questionnaire.Question__c}</div>
+                    <div className="questionQ">{this.props.questionnaire.grcpulse__Question__c}</div>
                     <DescriptionAnswer onAnswerEntered={this._onAnswerEntered}
                                        getSelectedAnswer={this.getSelectedAnswer}/>
                 </div>

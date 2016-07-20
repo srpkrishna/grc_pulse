@@ -32,7 +32,7 @@ define(function (require) {
             );
         }
     });
-    
+
     var TaskResourceList = React.createClass({
         render: function () {
             var resources = this.props.resources, surveys = this.props.surveys, counter = 0;
@@ -67,7 +67,7 @@ define(function (require) {
         }
         return {daysLeft: daysLeft, text : daysLeft + "d"};
     }
-    
+
     var Task = React.createClass({
         getInitialState: function () {
             return {
@@ -75,10 +75,10 @@ define(function (require) {
             };
         },
         _onTaskClick: function (event) {
-            this.props.onTaskClick(this.state.data.Id, this.state.data.Type__c);
+            this.props.onTaskClick(this.state.data.Id, this.state.data.grcpulse__Type__c);
         },
         componentDidMount: function () {
-            if (this.state.data.Type__c === "Public Message") {
+            if (this.state.data.grcpulse__Type__c === "Public Message") {
                 store.addUserInfoFetchListener(this._onUserInfo);
                 store.addUserProfileImageListener(this._onUserProfileImage);
                 var that = this;
@@ -92,7 +92,7 @@ define(function (require) {
             }
         },
         componentWillUnmount: function () {
-            if (this.state.data.Type__c === "Public Message") {
+            if (this.state.data.grcpulse__Type__c === "Public Message") {
                 store.removeUserInfoFetchListener(this._onUserInfo);
                 store.removeUserProfileImageListener(this._onUserProfileImage);
             }
@@ -119,7 +119,7 @@ define(function (require) {
             });
         },
         render: function () {
-            if (this.state.data.Type__c === "Public Message") {
+            if (this.state.data.grcpulse__grcpulse__Type__c === "Public Message") {
                 var img = this.state.data.userProfileImageURL ? this.state.data.userProfileImageURL : "file:///android_asset/www/css/img/user-default-image.png";
                 var titleMessage = this.state.data.userInfo ? getString("ceo_message_title", {userName: this.state.data.userInfo.Name}): "Loading...";
                 return (
@@ -129,24 +129,24 @@ define(function (require) {
                             <span>{titleMessage}</span>
                         </div>
                         <div className="summary">
-                            {this.state.data.Summary__c}
+                            {this.state.data.grcpulse__Summary__c}
                         </div>
                     </div>
                 );
             }
             else {
-                var files = this.state.data.Resources__c || [];
+                var files = this.state.data.grcpulse__Resources__c || [];
                 if (files && (typeof files === "string")) {
                     files = $.parseJSON(files)
                 }
-                var surveys = this.state.data.Survey_Details__c || [];
+                var surveys = this.state.data.grcpulse__Survey_Details__c || [];
                 if (surveys && (typeof surveys === "string")) {
                     surveys = $.parseJSON(surveys)
                 }
                 this.state.data.packName = "ISMS";
                 var endDateText = "", endDateCss = "endDate";
-                if(this.state.data.End_Date__c) {
-                    var endDateInfo = formatEndDate (this.state.data.End_Date__c);
+                if(this.state.data.grcpulse__End_Date__c) {
+                    var endDateInfo = formatEndDate (this.state.data.grcpulse__End_Date__c);
                     endDateText = endDateInfo.text;
                     endDateCss += (endDateInfo.daysLeft <= 0 ? " endDateAlert" : "");
                 }
@@ -157,10 +157,10 @@ define(function (require) {
                             <div className={endDateCss}>{endDateText}</div>
                         </div>
                         <div className="dept">
-                            {this.state.data.Department__c}
+                            {this.state.data.grcpulse__Department__c}
                         </div>
                         <div className="summary">
-                            {this.state.data.Summary__c}
+                            {this.state.data.grcpulse__Summary__c}
                         </div>
                         <div className="packContainerInTaskList">
                             <div className="packNameInTaskList">

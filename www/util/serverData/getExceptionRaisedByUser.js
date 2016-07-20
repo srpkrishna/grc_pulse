@@ -4,7 +4,7 @@
 define(function (require) {
     var Server = require("./callServer");
     var runTask = function (cbSuccess, cbFailure) {
-        var sql = "select Exception__c, Exception_Status__c, Manager__c, BU_Head__c from Requested_Exception__c where Exception_Status__c <> 'Inactive' and Requested_By__c = '" + window.ms.grcPulse.user.userId + "'";
+        var sql = "select grcpulse__Exception__c, grcpulse__Exception_Status__c, grcpulse__Manager__c, grcpulse__BU_Head__c from grcpulse__Requested_Exception__c where grcpulse__Exception_Status__c <> 'Inactive' and grcpulse__Requested_By__c = '" + window.ms.grcPulse.user.userId + "'";
         Server.query(sql, cbSuccess, cbFailure);
     };
     return runTask;

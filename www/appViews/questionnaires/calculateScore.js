@@ -6,19 +6,19 @@ define (function (require){
     var actions = require("util/actions");
     var questionType = require("./questionTypes");
     function calculate (questionnaire) {
-        var weightage = questionnaire.Weightage__c;
+        var weightage = questionnaire.grcpulse__Weightage__c;
         var userAnswer = questionnaire.userAnswer;
         var score = 0;
         if (userAnswer && (weightage || weightage === 0)) {
             //noinspection JSUnresolvedVariable
-            switch (questionnaire.Type__c) {
+            switch (questionnaire.grcpulse__Type__c) {
                 case questionType.SINGLE_ANSWER:
                 {
                     //noinspection JSUnresolvedVariable
                     var options = questionnaire.Question_Options__r.records;
                     for (var i = 0; i < options.length; i++) {
                         if (userAnswer === options[i].Id) {
-                            score = options[i].Score__c * weightage;
+                            score = options[i].grcpulse__Score__c * weightage;
                             break;
                         }
                     }
@@ -31,7 +31,7 @@ define (function (require){
                     for (var i = 0; i < options.length; i++) {
                         for (var j = 0; j < userAnswer.length; j++) {
                             if (userAnswer[j] === options[i].Id) {
-                                score += options[i].Score__c * weightage;
+                                score += options[i].grcpulse__Score__c * weightage;
                                 break;
                             }
                         }
@@ -44,7 +44,7 @@ define (function (require){
                     var options = questionnaire.Question_Options__r.records;
                     for (var i = 0; i < options.length; i++) {
                         if (userAnswer === options[i].Id) {
-                            score = options[i].Score__c * weightage;
+                            score = options[i].grcpulse__Score__c * weightage;
                             break;
                         }
                     }
@@ -96,7 +96,7 @@ define (function (require){
         },
         _onClick: function () {
             var data = store.getTaskDetails(this.props.taskId);
-            var surveys = data.Survey_Details__c || [];
+            var surveys = data.grcpulse__Survey_Details__c || [];
             var minScore = 0;
             if (surveys && (typeof surveys === "string")) {
                 surveys = $.parseJSON(surveys);
