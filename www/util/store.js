@@ -277,7 +277,7 @@ define(function (require) {
                     refresh_token = sjcl.decrypt(device.uuid, JSON.parse(refresh_token));
                     logout(refresh_token, function (data) {
                         dbNew.deleteLoginInfo(function () {
-                            window.location = "file:///android_asset/www/index.html";
+                            window.location = cordova.file.applicationDirectory + "www/index.html";
                         }, function () {
 
                         });

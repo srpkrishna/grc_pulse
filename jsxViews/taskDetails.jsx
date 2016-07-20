@@ -50,8 +50,6 @@ define(function (require) {
                     }
                 }
                 var url = JSON.parse(note.Body).fileUrl;
-                var filename = encodeURIComponent(url.substring(url.lastIndexOf("/")+1, url.length));
-                var fileURL = url.substring(0, url.lastIndexOf("/")+1) + filename;
                 that.openViewer(url);
             });
         },
@@ -77,8 +75,6 @@ define(function (require) {
                 });
             }
             else {
-                $(event.target).parent().siblings().css("background-color", "white");
-                $(event.target).parent().css("background-color", "LightGray");
                 var name = this.props.data.name;
                 if (name && (name.indexOf("pdf") > -1 || name.indexOf("mp4") > -1 )) {
                     this.getFileURL();
