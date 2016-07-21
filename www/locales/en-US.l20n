@@ -57,6 +57,7 @@
 <done "Done">
 <status "Status">
 <pending_approval "Pending approval">
+<approval_pending "Approval Pending">
 <approved "Approved">
 <activity_task_pending "Pending {{$name}}'s approval">
 <activity_task_approved "{{$name}} approved">

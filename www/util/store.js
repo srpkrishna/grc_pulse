@@ -198,7 +198,7 @@ define(function (require) {
                 requestException(action.params, function (data) {
                     userExceptions.push({
                         grcpulse__BU_Head__c: null,
-                        grcpulse__Exception_Status__c: "Approval Pending",
+                        grcpulse__Exception_Status__c: getString("approval_pending"),
                         grcpulse__Exception__c: action.params.exceptionId,
                         grcpulse__Manager__c: ""
                     });
