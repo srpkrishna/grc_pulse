@@ -93,7 +93,11 @@ define(function (require) {
         render: function () {
             var that = this;
             var setTimeoutId = setTimeout(function () {
-                that.input.focus();
+                //cordova.plugins.Keyboard.disableScroll(true);
+                if (device.platform !== "iOS") {
+                    that.input.focus();
+                }
+                clearTimeout(setTimeoutId);
             },0);
             return (
                 <div className="reportIncidentInputContainer">

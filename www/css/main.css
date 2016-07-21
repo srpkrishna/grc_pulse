@@ -1266,7 +1266,7 @@ iframe {
 }
 
 .reportIncidentInputContainer > input {
-    width: 80%;
+    width: 80% !important;
     line-height: 1em;
     border: 1px #a1a1a1;
     outline: none;
@@ -1274,6 +1274,7 @@ iframe {
     height: 2.5em;
     border-radius: 3px;
     padding: 0 0 0 0.5em;
+    font-size: 1em;
 }
 
 .reportIncidentInputContainer > div {
