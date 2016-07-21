@@ -48,7 +48,7 @@ define(function (require) {
             return (
                 React.createElement("div", {className: "questionContainer"}, 
                     React.createElement("div", {className: "questionQ"}, this.props.questionnaire.grcpulse__Question__c), 
-                    React.createElement(AnswerList, {answers: this.props.questionnaire.Question_Options__r.records, onAnswerSelected: this._onAnswerSelected, 
+                    React.createElement(AnswerList, {answers: this.props.questionnaire.grcpulse__Question_Options__r.records, onAnswerSelected: this._onAnswerSelected, 
                                 getSelectedAnswer: this.getSelectedAnswer})
                 )
             );

@@ -54,7 +54,7 @@ define(function (require) {
             }
         },
         render: function () {
-            var packName = this.props.data.Policy__r.Pack__r ? this.props.data.Policy__r.Pack__r.Name : "";
+            var packName = this.props.data.grcpulse__Policy__r.grcpulse__Pack__r ? this.props.data.grcpulse__Policy__r.grcpulse__Pack__r.Name : "";
             var dept = this.props.data.grcpulse__IT_Team_Name__c || "";
             var userExceptionStatus = store.isThisUserExceptionActive(this.props.data.Id);
             this.isActive = userExceptionStatus.isActive;
