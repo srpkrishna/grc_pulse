@@ -12,7 +12,7 @@ define(function (require) {
                 );
             }
             else if (resource && resource.name.indexOf('mp4') > -1) {
-                var posterURL = "file:///android_asset/www/css/svg/video%20play.svg";
+                var posterURL = cordova.file.applicationDirectory + "www/css/svg/video%20play.svg";
                 var videoUrl = rURL !== "NA" ? rURL : url;
                 return (
                     React.createElement("video", {className: "videoScreen", src: videoUrl, controls: true, ref: "videoRef", poster: posterURL, 
@@ -21,8 +21,9 @@ define(function (require) {
                            onLoadedMetadata: this._onLoadedMetadata, 
                            onLoadedData: this._onLoadedData, 
                            onProgress: this._onProgress, 
+                           onError: this._onError, 
                            onLoadStart: this._onLoadStart}, 
-                        React.createElement("source", {src: url, type: 'mp4'}), 
+                        React.createElement("source", {src: videoUrl, type: 'mp4'}), 
                         "Your phone does not support the video."
                     )
                 );
@@ -37,12 +38,22 @@ define(function (require) {
             }
             else if (resource && resource.name.indexOf('pdf') > -1) {
                 if (rURL !== "NA") {
-                    return (
-                        React.createElement("div", {className: "pdfScreen"}, 
-                            React.createElement("iframe", {frameborder: "0", src: "http://docs.google.com/gview?embedded=true&url="+ rURL}
+                    rURL = "http://docs.google.com/gview?embedded=true&url="+ rURL;
+                    //if (device.platform !== "iOS") {
+                        return (
+                            React.createElement("div", {className: "pdfScreen"}, 
+                                React.createElement("iframe", {frameborder: "0", src: rURL}
+                                )
                             )
-                        )
-                    );
+                        );
+                    /*}
+                    else {
+                        var ref = cordova.InAppBrowser.open (rURL, '_blank', 'location=no,clearcache=yes,zoom=no,toolbar=no,closebuttoncaption=Done');
+                        ref.insertCSS({code: "*{-webkit-overflow-scrolling: touch;overflow-scrolling: touch; body: margin-top: 1em !important;}"});
+                        return (
+                            <div></div>
+                        );
+                    }*/
                 }
                 else {
                     openViewer(url);
@@ -83,6 +94,10 @@ define(function (require) {
         },
         componentWillUnmount: function () {
 
+        },
+        _onError: function (event) {
+            console.log(event);
+            alert("Empty response from server");
         },
         _onVideoEnd: function (event) {
             //console.log("On Video Ended");

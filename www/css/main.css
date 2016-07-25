@@ -1,3 +1,4 @@
+*{-webkit-overflow-scrolling: touch;overflow-scrolling: touch;}
 html {
     width: 100% !important;
     height: 100% !important;
@@ -174,6 +175,8 @@ body {
     left: 5%;
     cursor: pointer;
     width: 90%;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
 }
 
 .taskContainer > .task {
