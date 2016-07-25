@@ -5,9 +5,9 @@ define(function (require) {
     var Server = require("./callServer");
     var runTask = function (params, callback) {
         var fields = {
-            Exception_Status__c: params.type
+            grcpulse__Exception_Status__c: params.type
         };
-        Server.update("Task__c", params.taskId, fields, callback);
+        Server.update("grcpulse__Task__c", params.taskId, fields, callback);
     };
     return runTask;
 });
