@@ -8,7 +8,7 @@ define(function (require) {
             senderID: "343201725359",
             vibrate: true,
             sound: true,
-            iconColor: "#d32e2e"
+            iconColor: "#4804AB"
         },
         ios: {
             senderID: "343201725359",
