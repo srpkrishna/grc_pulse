@@ -62,6 +62,9 @@
     ionic-plugin-keyboard 2.2.0 "Keyboard"
     phonegap-plugin-push 1.6.3 "PushPlugin"
     
+    how to add push plugin
+    cordova plugin add https://github.com/phonegap/phonegap-plugin-push --variable SENDER_ID="343201725359"
+    
 ##  16. To compile JSX file 
         jsx --watch /jsxViews/ /www/appViews/ --extension jsx --no-cache-dir
 *To be continued…*
