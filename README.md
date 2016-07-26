@@ -48,25 +48,21 @@
 	
 ##  15. Plugin details
     #following plugins need to be added for this project
-    cordova-plugin-x-toast
-    com.phonegap.plugins.PushPlugin (from sales force)
-    com.salesforce (from sales force)
-    cordova-plugin-file (cordova plugin add cordova-plugin-file)
-    cordova-plugin-file-transfer (cordova plugin add cordova-plugin-file-transfer)
-    cordova-plugin-whitelist
-    cordova-plugin-inappbrowser
-    de.sitewaerts.cordova.documentviewer
-      (third pirty code is located in plugins folder- for this to work you need cordova-plugin-file,cordova-plugin-file-transfer)
-    org.apache.cordova.device 0.3.0 "Device"
-    cordova plugin add cordova-plugin-dialogs
-    cordova plugin add cordova-sqlite-storage
-    cordova plugin add cordova-plugin-network-information
-    For Notification add following plugin
-        To add them via the CLI:
-            $ cordova plugin add org.apache.cordova.device
-            $ cordova plugin add org.apache.cordova.media
-
-    To compile JSX file 
+    cordova-plugin-device 1.1.2 "Device"
+    cordova-plugin-dialogs 1.2.1 "Notification"
+    cordova-plugin-file 4.1.1 "File"
+    cordova-plugin-file-transfer 1.5.1 "File Transfer"
+    cordova-plugin-inappbrowser 1.2.1 "InAppBrowser"
+    cordova-plugin-network-information 1.2.1 "Network Information"
+    cordova-plugin-statusbar 2.1.3 "StatusBar"
+    cordova-plugin-whitelist 1.2.2 "Whitelist"
+    cordova-plugin-x-toast 2.5.1 "Toast"
+    cordova-sqlite-storage 1.4.1 "Cordova sqlite storage plugin"
+    de.sitewaerts.cordova.documentviewer 0.2.0 "SitewaertsDocumentViewer"
+    ionic-plugin-keyboard 2.2.0 "Keyboard"
+    phonegap-plugin-push 1.6.3 "PushPlugin"
+    
+##  16. To compile JSX file 
         jsx --watch /jsxViews/ /www/appViews/ --extension jsx --no-cache-dir
 *To be continued…*
 
