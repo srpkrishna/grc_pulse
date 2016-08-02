@@ -11,11 +11,9 @@ define(function (require) {
             iconColor: "#4804AB"
         },
         ios: {
-            senderID: "343201725359",
-            gcmSandbox: true,
             alert: "true",
-            badge: "true",
-            sound: "true"
+            badge: true,
+            sound: 'false'
         },
         windows: {}
     });

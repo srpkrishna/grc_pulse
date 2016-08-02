@@ -2,7 +2,7 @@ mixpanel.track("App-Init");
 var languagesSupported = ["en-US", "fr", "ho"];
 var defaultLanguage = "en-US";
 var loginUrl = "https://login.salesforce.com/";
-var clientId = "3MVG9KI2HHAq33RylJct15Ip2rnEEnLc2nsPQ9ssY0t8w0RT3PZ1.x.tJDpSVizS3V5INYw51NQZXVg7Zkgtm";
+var clientId = "";
 var redirectUri = "testsfdc:///mobilesdk/detect/oauth/done";
 window.ms = {};
 window.ms.grcPulse = {};
@@ -27,9 +27,21 @@ function getAuthorizeUrl() {
         + '&response_type=token&client_id=' + encodeURIComponent(clientId)
         + '&redirect_uri=' + encodeURIComponent(redirectUri);
 }
+function getClientId()
+{
+    if(device.platform === "Android")
+    {
+        return "3MVG9KI2HHAq33RylJct15Ip2rnEEnLc2nsPQ9ssY0t8w0RT3PZ1.x.tJDpSVizS3V5INYw51NQZXVg7Zkgtm";
+    }else {
+        return "3MVG9KI2HHAq33RylJct15Ip2risbGTPz.1oAc1YhjyEX3mKv8Q.i0jsEeh410_LD22ZVEydsN3hXqrzfMgFm";
+    }
+
+}
+
 
 function onDeviceReady() {
     $("#loading").removeClass("hide");
+    clientId = getClientId();
     require(["util/store"], function (store) {
         var db = store.getNewDB();
         db.getLoginInfo("refresh_token", function (refresh_token) {
