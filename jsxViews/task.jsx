@@ -199,18 +199,22 @@ define(function (require) {
             });
             if (tasks.length) {
                 return (
+                  <div>
+                    <div className="pageTitle">{getString("task_list")}</div>
                     <div className="taskContainer" id={"task_list"} onScroll={this._onScroll} ref="taskContainer">
-                        <div className="pageTitle">{getString("task_list")}</div>
                         {taskNodes}
                     </div>
+                  </div>
                 );
             }
             else {
                 return (
+                  <div>
+                   <div className="pageTitle">{getString("task_list")}</div>
                     <div className="taskContainer" id={"task_list"}>
-                        <div className="pageTitle">{getString("task_list")}</div>
                         <div className="noTask">{getString("no_task")}</div>
                     </div>
+                  </div>
                 );
             }
         }

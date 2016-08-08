@@ -96,18 +96,22 @@ define(function (require) {
             });
             if (exceptions.length) {
                 return (
+                  React.createElement("div", null, 
+                    React.createElement("div", {className: "pageTitle"}, getString("exceptions")), 
                     React.createElement("div", {className: "pageContainer"}, 
-                        React.createElement("div", {className: "pageTitle"}, getString("exceptions")), 
-                        exceptionsNodes
+                      exceptionsNodes
                     )
+                  )
                 );
             }
             else {
                 return (
+                  React.createElement("div", null, 
+                    React.createElement("div", {className: "pageTitle"}, getString("exceptions")), 
                     React.createElement("div", {className: "pageContainer"}, 
-                        React.createElement("div", {className: "pageTitle"}, getString("exceptions")), 
-                        React.createElement("div", {className: "noTask"}, getString("no_exceptions"))
+                      React.createElement("div", {className: "noTask"}, getString("no_exceptions"))
                     )
+                  )
                 );
             }
         }

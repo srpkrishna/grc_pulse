@@ -96,18 +96,22 @@ define(function (require) {
             });
             if (exceptions.length) {
                 return (
+                  <div>
+                    <div className="pageTitle">{getString("exceptions")}</div>
                     <div className="pageContainer">
-                        <div className="pageTitle">{getString("exceptions")}</div>
-                        {exceptionsNodes}
+                      {exceptionsNodes}
                     </div>
+                  </div>
                 );
             }
             else {
                 return (
+                  <div>
+                    <div className="pageTitle">{getString("exceptions")}</div>
                     <div className="pageContainer">
-                        <div className="pageTitle">{getString("exceptions")}</div>
-                        <div className="noTask">{getString("no_exceptions")}</div>
+                      <div className="noTask">{getString("no_exceptions")}</div>
                     </div>
+                  </div>
                 );
             }
         }

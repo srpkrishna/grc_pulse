@@ -372,7 +372,7 @@ define(function (require) {
         },
         getResource: function (note, callback) {
             var error = function (error) {
-                alert(error);
+                // alert(error);
             };
             var resource = require("./serverData/getResource");
             if (!note.Body) {
@@ -617,7 +617,7 @@ function saveFile(fileName, data, callback) {
                 fileWriter.write(blob);
 
             }, function (error) {
-                alert(error.code);
+                // alert(error.code);
             });
         });
     });
@@ -628,7 +628,7 @@ function saveFileInDir(dirName, fileName, data, callback) {
     window.resolveLocalFileSystemURL(cordova.file.dataDirectory, gotFS, fail);
     function fail(error) {
         $("#loading").addClass("hide");
-        alert(error.code);
+        // alert(error.code);
     }
 
     function gotFS(fileSystem) {

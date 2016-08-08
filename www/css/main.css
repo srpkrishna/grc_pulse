@@ -160,6 +160,10 @@ body {
     overflow-y: scroll;
     left: 0.25em;
 }
+/*Shruthi*/
+/*.pageContainer > .exceptionRow {
+    -webkit-overflow-scrolling: touch;
+}*/
 
 .zeroBottom {
     bottom: 0 !important;
@@ -184,6 +188,7 @@ body {
     position: relative;
     margin: 0 0 20px 0;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 div.taskContainer > div.task > .titleContainer > .title {
@@ -1408,6 +1413,7 @@ iframe {
     background-color: #ffffff;
     margin: 0 0 0.5em 0;
     padding: 0.5em;
+    /*-webkit-transform: translate3d(0, 0, 0);  Shruthi*/
 }
 
 .exceptionsContainer {

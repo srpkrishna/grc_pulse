@@ -199,18 +199,22 @@ define(function (require) {
             });
             if (tasks.length) {
                 return (
+                  React.createElement("div", null, 
+                    React.createElement("div", {className: "pageTitle"}, getString("task_list")), 
                     React.createElement("div", {className: "taskContainer", id: "task_list", onScroll: this._onScroll, ref: "taskContainer"}, 
-                        React.createElement("div", {className: "pageTitle"}, getString("task_list")), 
                         taskNodes
                     )
+                  )
                 );
             }
             else {
                 return (
+                  React.createElement("div", null, 
+                   React.createElement("div", {className: "pageTitle"}, getString("task_list")), 
                     React.createElement("div", {className: "taskContainer", id: "task_list"}, 
-                        React.createElement("div", {className: "pageTitle"}, getString("task_list")), 
                         React.createElement("div", {className: "noTask"}, getString("no_task"))
                     )
+                  )
                 );
             }
         }
