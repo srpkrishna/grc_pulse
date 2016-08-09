@@ -98,7 +98,7 @@ define(function (require) {
                 return (
                   <div>
                     <div className="pageTitle">{getString("exceptions")}</div>
-                    <div className="pageContainer">
+                    <div className="pageContainer" id="exceptionListContainer">
                       {exceptionsNodes}
                     </div>
                   </div>
@@ -108,7 +108,7 @@ define(function (require) {
                 return (
                   <div>
                     <div className="pageTitle">{getString("exceptions")}</div>
-                    <div className="pageContainer">
+                    <div className="pageContainer" id="exceptionListContainer">
                       <div className="noTask">{getString("no_exceptions")}</div>
                     </div>
                   </div>

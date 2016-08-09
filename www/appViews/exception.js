@@ -98,7 +98,7 @@ define(function (require) {
                 return (
                   React.createElement("div", null, 
                     React.createElement("div", {className: "pageTitle"}, getString("exceptions")), 
-                    React.createElement("div", {className: "pageContainer"}, 
+                    React.createElement("div", {className: "pageContainer", id: "exceptionListContainer"}, 
                       exceptionsNodes
                     )
                   )
@@ -108,7 +108,7 @@ define(function (require) {
                 return (
                   React.createElement("div", null, 
                     React.createElement("div", {className: "pageTitle"}, getString("exceptions")), 
-                    React.createElement("div", {className: "pageContainer"}, 
+                    React.createElement("div", {className: "pageContainer", id: "exceptionListContainer"}, 
                       React.createElement("div", {className: "noTask"}, getString("no_exceptions"))
                     )
                   )
