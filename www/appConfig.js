@@ -125,6 +125,14 @@ function handleEvents() {
             href: -1
         });
     }, false);
+    window.onerror = function(message, source, lineno, colno, error){
+      // window.fabric.Crashlytics.addLog("crashMessage:"+message);
+      // window.fabric.Crashlytics.addLog("crashSource:"+source);
+      // window.fabric.Crashlytics.addLog("crashLineno:"+lineno);
+      // window.fabric.Crashlytics.addLog("crashColno:"+colno);
+      // window.fabric.Crashlytics.addLog("crasherror:"+error);
+      // window.fabric.Crashlytics.sendCrash();
+    }
 }
 requirejs(["util/config", "jquery-2.2.4.min", "react", "react-dom.min", "l20n.min", "flux.min", "sjcl"], function (CONFIG, jquery, react, reactDOM, l20n) {
     requirejs(["forcetk.mobilesdk"], function () {

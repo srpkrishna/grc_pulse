@@ -1319,10 +1319,16 @@ iframe {
     background-color: #FFFFFF;
 }
 
+.questionnairesList{
+  position: fixed;
+  width: 100%;
+  bottom: 5em;
+  overflow-y: scroll;
+}
 .bubble_left {
     position: relative;
     background: #FFFFFF;
-    border: 1px solid #454545;
+    /*border: 1px solid #454545;*/
     height: 50px;
     width: 80%;
     margin-left: 7%;
@@ -1367,7 +1373,7 @@ iframe {
     position: relative;
     border: 4px solid #c2e1f5;
     background: rgba(248, 252, 189, 1);
-    border: 1px solid #454545;
+    /*border: 1px solid #454545;*/
     height: 50px;
     width: 80%;
     margin-right: 6%;
@@ -1412,7 +1418,7 @@ iframe {
     background-color: #ffffff;
     margin: 0 0 0.5em 0;
     padding: 0.5em;
-    -webkit-transform: translate3d(0, 0, 0); 
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 .exceptionsContainer {

@@ -2,50 +2,50 @@
 
 ##	1. Install brew: ##
 	`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-	
+
 ##	2. Install Node.js with brew: ##
 	`brew install node`
-	
+
 ##	3. Install Git:##
 	http://git-scm.com/download/mac
-	
+
 ##	4. Install Android Studio:##
 	http://developer.android.com/sdk/index.html
 
 ##	5. Add ANDROID_HOME to PATH:##
 	From home directory type `vi .bash_profile` and add this `export PATH=<path_to_android_sdk>/platform-tools:<path_to_android_sdk>/tools:$PATH`
-	
+
 ##	6. Install ARM & Intel system images using SDK Manager:##
 	`android`
-	
+
 ##	7. Create Android Virtual Device:##
 	`android avd`
-	
+
 ##	8. Install iOS Simulator##
 	Make sure Xcode is installed and all T&C are accepted at its first launch.
 	`brew install ios-sim`
-	
+
 ##	9. Install Cordova##
 	`sudo npm install -g cordova`
-	
+
 ##	10. Create Cordova app##
 	`cordova create GRC_Pulse`
 	`cordova platform add android`
 	`cordova platform add ios`
 	`cordova platform add windows`
-	
+
 ##	11. Install forcedroid##
 	`sudo npm install forcedroid -g`
-	
+
 ##	12. Create forcedroid app:##
 	{????}
-	
+
 ##	13. Install forceios##
 	`sudo  npm install forceios -g`
-	
+
 ##	14. Create forceios app##
 	{????}
-	
+
 ##  15. Plugin details
     #following plugins need to be added for this project
     cordova-plugin-device 1.1.2 "Device"
@@ -61,15 +61,17 @@
     de.sitewaerts.cordova.documentviewer 0.2.0 "SitewaertsDocumentViewer"
     ionic-plugin-keyboard 2.2.0 "Keyboard"
     phonegap-plugin-push 1.6.3 "PushPlugin"
-    
+
     how to add push plugin
     cordova plugin add https://github.com/phonegap/phonegap-plugin-push --variable SENDER_ID="343201725359"
-    
-##  16. To compile JSX file 
+
+		cordova plugin add cordova-fabric-plugin --variable FABRIC_API_KEY=f7757b574b91f1a340fe196ca6413e7c71fb1461 --variable FABRIC_API_SECRET=e36436cf01eb29760ba44584a78a095ab741f6ec4b48ac2c95f09cfe97642a50
+
+##  16. To compile JSX file
         jsx --watch /jsxViews/ /www/appViews/ --extension jsx --no-cache-dir
 *To be continued…*
 
-env variables 
+env variables
 
 export ANDROID_HOME=/Users/asinha/Library/Android/sdk
 export PATH=$ANDROID_HOME/platform-tools:$PATH
@@ -108,10 +110,10 @@ access_token=00D61000000YvHe!AQUAQNAwKfHggEPQav8_mEr1GB_K0tAYfltSI4a4fzjVWFSl1CA
 
 Code Signing Details for Android:
 Keystore password: grcpulse
- 
+
 Alias: grc
 Alias password: grcpulse
- 
+
 Validity: 100 years
 First Last name: MetricStream
 Organization unit: AEG
@@ -119,7 +121,7 @@ Organization: MetricStream
 City / Locality: Bangalore
 State / Province: Karnataka
 Country Code: IN
- 
+
 Ashish Intellij master password: 123
- 
+
 Type: release

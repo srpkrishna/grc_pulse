@@ -45,7 +45,7 @@ define(function (require) {
                 }
             });
             return (
-                <div>
+                <div className="questionnairesList">
                     {questionnairesNode}
                 </div>
             );
@@ -56,7 +56,6 @@ define(function (require) {
             return {};
         },
         componentDidMount: function () {
-            this.input  = $(this.refs["incidentInput"]);
             this.submit = $(this.refs["incidentInputSubmit"]);
         },
         _onClick: function () {
@@ -80,7 +79,7 @@ define(function (require) {
             }
         },
         _onChange: function (event) {
-            var value = this.input.val();
+            var value = $(this.refs["incidentInput"]).val();
             if (value && value !== "") {
                 this.submit.addClass("reportIncidentInputActive");
             }
@@ -90,18 +89,27 @@ define(function (require) {
             questions[currentIndex].answer = value;
             this.setState({});
         },
+
         render: function () {
             var that = this;
-            var setTimeoutId = setTimeout(function () {
-                //cordova.plugins.Keyboard.disableScroll(true);
-                if (device.platform !== "iOS") {
-                    that.input.focus();
-                }
-                clearTimeout(setTimeoutId);
-            },0);
+            var value = questions[currentIndex].answer;
+
+            var inputDiv = <input key={currentIndex} type={questions[currentIndex].type} onChange={this._onChange} onKeyUp={this._onKeyUp} value={value} ref="incidentInput" autoFocus/>
+            ;
+
+            if(questions[currentIndex].type === "datetime-local")
+            {
+              if (!value && value === "" ) {
+                value = new Date().toISOString();
+              }
+              inputDiv = <input key={currentIndex} type={questions[currentIndex].type} onChange={this._onChange} onKeyUp={this._onKeyUp} value={value} ref="incidentInput" />
+              ;
+            }
+
+
             return (
                 <div className="reportIncidentInputContainer">
-                    <input type={questions[currentIndex].type} onChange={this._onChange} onKeyUp={this._onKeyUp} value={questions[currentIndex].answer} ref="incidentInput"/>
+                    {inputDiv}
                     <div onClick={this._onClick} ref="incidentInputSubmit">
                         <div>{getString("next")}</div>
                     </div>
